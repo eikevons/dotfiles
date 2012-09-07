@@ -1,0 +1,25 @@
+## General rules
+
+# backups
+*~
+*.swp
+.svn
+.git
+
+## Vim specific rules
+
+# do not track bundles
+vim/bundle/conque-read-only/
+
+
+vim/tags/
+vim/view/
+# ignore hidden files
+vim/.netrwhist
+vim/.VimballRecord
+vim/yankring_history
+vim/yankring_history_v2.txt
+
+## GNUPG specific rules
+gnupg/gpg-agent-info-*
+gnupg/random_seed

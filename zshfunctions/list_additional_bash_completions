@@ -1,0 +1,34 @@
+list_additional_bash_completions()
+{
+
+local missing BASH_COMPLETION_DIR ZSH_PREFIX
+typeset -a missing
+
+ZSH_PREFIX="/usr/share/zsh"
+BASH_COMPLETION_DIR="/etc/bash_completion.d"
+
+if setopt | grep -q nonomatch; then
+    CHANGEDOPTS=false
+else
+    CHANGEDOPTS=true
+    setopt nonomatch
+fi
+
+for f in `ls $BASH_COMPLETION_DIR`; do
+    whence -p "$f" >&/dev/null && 
+    test ! -f $ZSH_PREFIX/**/_$f >&/dev/null &&
+    ((! $+_comps[$f])) && 
+    missing=($missing $f)
+done
+
+if $CHANGEDOPTS; then
+    setopt nomatch
+fi
+
+if [[ ${#missing} -gt 0 ]]; then
+    
+    print "${#missing} additional bash completions found:"
+    print ${missing}
+
+fi
+}

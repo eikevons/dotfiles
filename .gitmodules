@@ -1,0 +1,30 @@
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "vim/bundle/html5"]
+	path = vim/bundle/html5
+	url = git://github.com/othree/html5.vim.git
+[submodule "vim/bundle/pydoc"]
+	path = vim/bundle/pydoc
+	url = git://github.com/fs111/pydoc.vim.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/solarized-colors"]
+	path = vim/bundle/solarized-colors
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/bundle/xptemplate"]
+	path = vim/bundle/xptemplate
+	url = git://github.com/drmingdrmer/xptemplate-dist.git
+[submodule "vim/bundle/YankRing"]
+	path = vim/bundle/YankRing
+	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "vim/bundle/indent-object"]
+	path = vim/bundle/indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git

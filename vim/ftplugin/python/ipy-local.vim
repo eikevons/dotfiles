@@ -1,0 +1,1 @@
+/home/eike/src/ipython/docs/examples/vim/ipy-local.vim

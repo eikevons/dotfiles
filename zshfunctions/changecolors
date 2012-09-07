@@ -1,0 +1,34 @@
+function changecolors ()
+{
+    if [[ ${background:-light} = light ]]; then
+        # make it dark like vim's molokai
+        # foreground
+        print -n '\e]10;#EAEAEA\a'
+        # background
+        print -n '\e]11;#1B1D1E\a'
+        # cursor
+        # print '\e]12;10\a'
+    # PS1="%?%B%F{red}%T %b%f%k${specialenv:-} %n@%m:%B%F{green}%~%b%f%k
+# %# "
+        eval `dircolors ~/.dircolors.darkbg`
+        background="dark"
+        export background
+    else
+        # foreground
+        print -n '\e]10;grey10\a'
+        # background
+        print -n '\e]11;#fff9b7\a'
+        # cursor
+        # print '\e]12;10\a'
+    # PS1="%?%F{red}%T %b%f%k${specialenv:-} %B%F{black}%n@%m:%F{white}%K{green}%~%b%f%k
+# %# "
+        eval `dircolors ~/.dircolors.lightbg`
+        background="light"
+        export background
+    fi
+
+    # Update colorized file names for completion (is done automatically
+    # zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+    update_color_settings
+}

@@ -1,0 +1,5 @@
+bind ^X lockscreen
+bind X lockscreen
+bind x remove
+bind j windows
+# bind k focus up

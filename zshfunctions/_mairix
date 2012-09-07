@@ -1,0 +1,39 @@
+#compdef mairix
+
+_mairix() {
+  _arguments \
+    {-h,--help}'[Show usage]' \
+    {-V,--version}'[Show version]' \
+    {-v,--verbose}'[Be verbose]' \
+    {-f,--rcfile}'[Use alternate rc file]:rc file:_files' \
+    {-p,--purge}'[Purge non-existing messages]' \
+    {-F,--fast-index}'[Fast maildir and MH scan]' \
+    {-a,--augment}'[Add new matches to match folder]' \
+    {-t,--threads}'[Include all messages in same threads as matching messages]' \
+    {-o,--mfolder}'[Use alternative output mfolder]:output mfolder:_files -/' \
+    {-x,--excerpt-output}'[Display header excerpt of matching messages]' \
+    {-r,--raw-output}'[Display paths of matching messages]' \
+    {-Q,--no-integrity-checks}'[Omit database integrity checks]' \
+    '--unlock[Remove existing locks before accessing the database]'
+
+  # TODO: Check <http://www.zsh.org/mla/users/2007/msg01187.html> if the search
+  # pattern can be made more flexible. At the moment `st:' is not completed and
+  # the `F:' flags are completed only for the first flag.
+
+  _values -S ':' 'search patterns' \
+    't[Match in To\: header]:To\: header:' \
+    'c[Match in Cc\: header]:Cc\: header:' \
+    'f[Match in From\: header]:From\: header:' \
+    'a[Match in To\:, Cc\: or From\: header]:Address headers' \
+    's[Match in Subject\: header]:Subject\: header:' \
+    'b[Match in message body]:Message body:' \
+    'm[Match in Message-ID\: header]:Message-ID\: header:' \
+    'n[Match name of attachments]:Attachment name:' \
+    'F[Match on message flags]:message flags:((s\:seen r\:replied f\:flagged -\:negate))' \
+    'p[Match path substring]:Path substring' \
+    'd[Match date from start-end]:Date start-end:' \
+    'z[Match message size low-high]:Message size low-high:'
+}
+
+
+_mairix "$@"

@@ -1,0 +1,83 @@
+!XTerm*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-1
+! XTerm*Font: -misc-fixed-medium-r-normal--14-*-*-*-*-*-iso8859-1
+! XTerm*Font2: -misc-fixed-medium-r-normal--8-*-*-*-*-*-iso8859-1
+! XTerm*Font3: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-1
+! XTerm*Font4: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-1
+! XTerm*Font5: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso8859-1
+! XTerm*Font6: -misc-fixed-medium-r-normal--20-*-*-*-*-*-iso8859-1
+!*font:-misc-fixed-medium-r-normal--14-*-*-*-*-*-iso8859-1
+!*font: xft:Monospace:size=11
+
+XTerm*scrollBar: False
+XTerm*scrollTtyOutput: False
+XTerm*scrollKey: True
+XTerm*loginShell: True
+XTerm*cursorColor: Green
+
+! See: https://wiki.archlinux.org/index.php/Font_Configuration#Applications_without_fontconfig_support
+ Xft.antialias:  true
+! Sub-pixel rendering and hinting is not compatible
+! Xft.hinting:    true
+! Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+! TERM=rxvt-unicode wird von den meisten systemen nicht verstanden
+! TERM=rxvt schon
+! URxvt.termName: rxvt
+!URxvt.font: -misc-fixed-medium-r-normal--14-*-*-*-*-*-iso8859-1
+! URxvt.font: xft:Inconsolata for Powerline:size=12,unifont:size=11
+! URxvt.font: xft:Liberation Mono:size=8.5,unifont:size=9
+! URxvt.font: xft:DejaVu Sans Mono:size=9,unifont:size=9
+! EIKE(2012-06-25): The libxft update changed the font rendering dramatically:
+! URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true,unifont:size=9
+URxvt.font: xft:Inconsolata for Powerline:size=10,unifont:size=9
+! URxvt.foreground: Grey10
+! URxvt.foreground: #e8e8e2
+URxvt.foreground: #eaeaea
+! URxvt.background: Black
+URxvt.depth: 32
+! URxvt.background: rgba:bff0/bff0/bff0/bbbb
+! URxvt.background: rgba:afff/af4f/78ef/99ff
+! URxvt.background: rgba:bfff/bf4f/b8ef/99ff
+! URxvt.background: #FFF9B7
+URxvt.background: #1B1D1E
+! URxvt.background: Black
+! URxvt.cursorColor: Yellow
+URxvt.cursorColor: Green
+URxvt.fullCursor: true
+URxvt.cursorBlink: false
+! URxvt*inheritPixmap: True
+! URxvt*tintColor: Black
+! URxvt*shading: 60
+URxvt.fading: 15
+
+URxvt.mapAlert:   true
+!URxvt.visualBell: true
+
+URxvt.scrollBar: True
+URxvt.saveLines: 8000
+URxvt.loginShell: True
+
+! Plugin stuff
+URxvt*urlLauncher: iceweasel
+! See urxvtperl(3)
+URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,readline
+
+URxvt.matcher.button: 2
+URxvt.matcher.pattern.1: \\B(/\\S+?):(\\d+)(?=:|$)
+! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+
+Xcursor.theme: ComixCursors-Opaque-Orange-Large-Slim
+
+
+!taken from <http://colas.nahaboo.net/mouse-wheel-scroll/#xterm>
+!# Scrolling on wheel mouse: half a page normally, line per line with shift
+XTerm.vt100.translations: #override\n\
+Shift<Btn4Down>,<Btn4Up>:scroll-back(1,line)\n\
+Shift<Btn5Down>,<Btn5Up>:scroll-forw(1,line)\n\
+Ctrl<Btn4Down>,<Btn4Up>:scroll-back(1,page)\n\
+Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
+<Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
+<Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)
+

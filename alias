@@ -1,0 +1,76 @@
+# vim:ft=zsh
+# command line aliases
+# 
+# called in ~/.bashrc and ~/.zshrc
+#
+
+# some ls aliases
+if [[ -n $ZSH_VERSION ]]; then
+    LS=`whence -p ls`
+else
+    LS=`which ls`
+fi
+
+alias ls="$LS --color=auto -B"
+alias ll='ls -lho'
+alias lll="$LS --color=auto -la"
+alias la="$LS --color=auto -A"
+alias lh='ls -sh'
+alias l='ls -CF'
+alias l1='ls -1'
+alias lsnew="ls --sort=time --reverse -1"
+
+alias cd..='cd ..'
+
+alias ...='cd ../..'
+
+# secure file movement
+alias rm='rm -i'    
+alias mv='mv -i'
+alias cp='cp -i'
+
+#alias cdrecord='cdrecord -v -eject'
+
+# alias ipysci='/usr/bin/ipython2.5 -pylab -p scipy'
+alias ipy="LESS=-r `which ipython`"
+alias ipylab='ipy --pylab --profile=scipy'
+alias ipyalps='LESS=-r ipython2.6 --pylab --profile=alps'
+alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
+
+alias rndline="shuf -n1"
+
+alias gvi='/usr/bin/gvim --remote-tab-silent'
+
+alias npwget='wget -Yoff'
+
+alias pc-clear='[[ -d /media/sansa/podcasts ]] && rm -vrf /media/sansa/podcasts/* || print "Player not mounted"'
+alias pc-len="mpginfo /media/sansa/podcasts/*/*mp3 2>/dev/null  | grep --text Estimated | cut -d ' ' -f 5 | sed -e 's/s$//;s/:/ /' | awk 'BEGIN{s=0;} {s = s + \$1*60 +  \$2;} END{print s/60 \" min\";}'"
+
+alias mp='mplayer'
+alias kika='vlc http://85.239.122.162/mk3w-3faw-3rqf-enc0-kika'
+
+alias svnstatus='svn status | grep --color=never "^[^?]\|py$"'
+
+alias dfu='diff -u'
+
+# suffix aliases for zsh
+if [[ -n $ZSH_VERSION ]]; then
+  # documents
+  alias -s ps=okular
+  alias -s pdf=okular
+  alias -s dvi=okular
+
+  alias -g ,G='|grep'
+  alias -g ,N='|nl'
+  alias -g ,L='|less'
+  alias -g ,S='|sort'
+  alias -g ,SN='|sort -g'
+  alias -g ,SN2='|sort -g -k 2'
+  alias -g ,SN3='|sort -g -k 3'
+  alias -g ,SN4='|sort -g -k 4'
+  alias -g ,SN5='|sort -g -k 5'
+fi
+
+if [[ -e "$HOME/.alias.private" ]]; then
+  source "$HOME/.alias.private"
+fi

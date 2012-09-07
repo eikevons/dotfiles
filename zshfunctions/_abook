@@ -1,0 +1,19 @@
+#compdef abook
+
+_abook() {
+  _arguments \
+    {-h,--help}'[Show usage]' \
+    {-C,--config}'[config file]:configuration file:_files' \
+    '--datafile[addressbook file]:addressbook file:_files' \
+    '--mutt-query[mutt query string]:query string:' \
+    '--add-email[add email from message from stdin]'\
+    '--add-email-quiet[quietly add email from message from stdin]' \
+    '--formats[list formats]' \
+    '--convert[convert database]' \
+    '--infile[input file]:input file:_files' \
+    '--informat[input format]:input format:((abook\:abook\ native ldif\:ldif\ /\ Netscape\ addressbook mutt\:mutt\ alias pine\:pine\ addressbook csv\:comma\ separated\ values csvall\:comma\ separated\ values\ \(all\ fields\) palmcsv\:Palm\ CSV))' \
+    '--outfile[output file]:output file:_files' \
+    '--outformat[output format]:output format:((abook\:abook\ native ldif\:ldif\ /\ Netscape\ addressbook mutt\:mutt\ alias html\:HTML\ document pine\:pine\ addressbook gcrd\:GnomeCard csv\:comma\ separated\ values csvall\:comma\ separated\ values\ \(all\ fields\) palmcsv\:Palm\ CSV elm\:elm\ alias text\:plain\ text wl\:Wanderlust\ addressbook spruce\:Spruce\ addressbook))' \
+}
+
+_abook "$@"

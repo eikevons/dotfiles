@@ -1,0 +1,20 @@
+midori() {
+# handles local files correctly (i.e. translates paths to file:///... urls)
+    MIDORI=/usr/bin/midori
+    [[ -x $MIDORI ]] || { echo "$0: No executable $MIDORI" 1>&2 ; return 1}
+
+    # we do not handle multiple parameters
+    if [[ $# != 1 ]]; then
+        $MIDORI $* &
+
+    # we do not need to handle correct urls
+    elif [[ "$1" =~ "(https?|ftps?|file)://.*" ]]; then
+        $MIDORI "$1" &
+
+    # we do not handle options
+    elif [[ "$1" == "-"* ]]; then
+        $MIDORI "$1" &
+    else
+        $MIDORI file://`readlink -f "$1"` &
+    fi
+}

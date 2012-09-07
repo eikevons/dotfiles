@@ -1,0 +1,13 @@
+#compdef s-volume
+
+_s_volume() {
+  _values 'volume settings' \
+    {up,+}'[Increase volume (and unmute)]' \
+    {down,-}'[Decrease volume (and unmute)]' \
+    'mute[Mute output]' \
+    'unmute[Unmute output]' \
+    'toggle[Toggle mute status]' \
+    'phones[Preset volume for head phones]'
+}
+
+_s_volume "$@"
