@@ -23,3 +23,7 @@ vim/yankring_history_v2.txt
 ## GNUPG specific rules
 gnupg/gpg-agent-info-*
 gnupg/random_seed
+gnupg/*bak
+gnupg/secring.gpg
+gnupg/trustdb.gpg
+gnupg/private*

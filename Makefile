@@ -18,7 +18,7 @@ X-setup: $(addprefix $(HOME)/., Xresources)
 
 screen-setup: $(addprefix $(HOME)/., screenrc)
 
-gnupg-setup: $(addprefix $(HOME)/., gnupg)
+gnupg-setup: $(addprefix $(HOME)/., gnupg/gpg.conf gnupg/gpa.conf gnupg/pubring.gpg gnupg/pubring.kbx)
 
 bash-setup: $(addprefix $(HOME)/., bashrc bash_profile alias)
 
