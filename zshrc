@@ -365,3 +365,5 @@ case $TERM in
     ;;
 esac
 ## }}}
+
+[[ -e $HOME/.zshrc.private ]] && source $HOME/.zshrc.private
