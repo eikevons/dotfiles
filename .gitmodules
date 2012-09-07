@@ -9,13 +9,13 @@
 	url = git://github.com/fs111/pydoc.vim.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/solarized-colors"]
 	path = vim/bundle/solarized-colors
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
+	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
 	url = git://github.com/drmingdrmer/xptemplate-dist.git
