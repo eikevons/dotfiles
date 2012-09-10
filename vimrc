@@ -78,7 +78,7 @@ if has("gui_running")
   " set guifont=Monospace\ 9
   " set guifont=Liberation\ Mono\ 8.5
   " set guifont=DejaVu\ Sans\ Mono\ 9
-  " set guifont=Terminus\ 10
+  set guifont=Terminus\ 8
   set guioptions-=T
   set guioptions+=c
   set cursorline
