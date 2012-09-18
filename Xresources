@@ -27,7 +27,8 @@ Xft.rgba:       rgb
 ! URxvt.termName: rxvt
 ! EIKE(2012-06-25): The libxft update changed the font rendering dramatically:
 ! URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true,xft:unifont:size=9
-URxvt.font: xft:Terminus:pixelsize=8,xft:unifont:size=9
+! URxvt.font: xft:Terminus:pixelsize=8,xft:unifont:size=9
+URxvt.font: xft:Dina:pixelsize=8,xft:unifont:size=9
 ! URxvt.foreground: Grey10
 ! URxvt.foreground: #e8e8e2
 URxvt.foreground: #eaeaea
