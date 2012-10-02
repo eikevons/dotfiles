@@ -16,9 +16,6 @@
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule "vim/bundle/xptemplate"]
-	path = vim/bundle/xptemplate
-	url = git://github.com/drmingdrmer/xptemplate-dist.git
 [submodule "vim/bundle/YankRing"]
 	path = vim/bundle/YankRing
 	url = git://github.com/vim-scripts/YankRing.vim.git
@@ -28,3 +25,6 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/xptemplate"]
+	path = vim/bundle/xptemplate
+	url = git://github.com/eikevons/xptemplate.git
