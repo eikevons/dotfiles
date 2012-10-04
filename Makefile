@@ -4,7 +4,9 @@ DOTFILES := $(CURDIR)
 
 ZSHFUNCTIONS := $(wildcard zshfunctions/*[^~])
 
-all: vim-setup zsh-setup colors X-setup screen-setup gnupg-setup
+all: basic-setup vim-setup zsh-setup colors X-setup screen-setup gnupg-setup
+
+basic-setup: $(addprefix $(HOME)/., profile)
 
 vim-setup:  $(addprefix $(HOME)/., vim vimrc)
 

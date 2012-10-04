@@ -325,7 +325,7 @@ function update_color_settings () {
       col_retcode="%B%F{white}%K{red}"
     fi
     zstyle ':vcs_info:*' unstagedstr "%B%F{red}"
-    zstyle ':vcs_info:*' stagedstr "%B%F{yellow}"
+    zstyle ':vcs_info:*' stagedstr "%B%F{magenta}"
     # zstyle ':vcs_info:svn:*' formats "%u%F{yellow}%b"
     zstyle ':vcs_info:*' formats "%%b%k%f[%F{yellow}%c%u%b%%b%k%f]"
     zstyle ':vcs_info:*' actionformats "%%b%k%f[%F{yellow}%u%b%%b%%k%f|%F{yellow}%a%%b%f%k]"
