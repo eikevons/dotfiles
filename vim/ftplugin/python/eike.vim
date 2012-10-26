@@ -11,6 +11,13 @@ setlocal formatoptions=croq
 setlocal relativenumber
 setlocal numberwidth=3
 
+if has("gui")
+  if !exists("g:python_column_increased") && &columns < (80 + &numberwidth)
+    let g:python_column_increased = 1
+    exec "set columns+=".&numberwidth
+  endif
+endif
+
 " see: http://www.sontek.net/post/Python-with-a-modular-IDE-(Vim).aspx
 " setlocal tags+=$HOME/.vim/tags/python.tags
 
