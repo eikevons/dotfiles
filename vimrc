@@ -197,12 +197,15 @@ let g:xptemplate_vars = "SParg="
 " let g:xptemplate_fallback = '<Plug>supertabKey'
 " let g:xptemplate_key = '<Tab>'
 
-let g:yankring_history_file = ".vim/yankring_history"
-
 """""""""""""""""""""""""""""""""
 " Powerline
 let g:Powerline_symbols = "fancy"
 let g:Powerline_stl_path_style = "short"
+
+"""""""""""""""""""""""""""""""""
+" yankstack
+" turn default mappings off
+let g:yankstack_map_keys = 0
 
 """""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
@@ -315,7 +318,11 @@ cnoremap $c <C-\>eAppendCurrentFileDir()<cr>
 
 func! AppendCurrentFileDir()
   " see |c_CTRL-\_e|
-  let cmd = getcmdline() . " " . expand("%:h") . "/"
+  let cmd = getcmdline()
+  if cmd[strlen(cmd)-1] != " "
+    let cmd = cmd . " "
+  endif
+  let cmd = cmd . fnameescape(expand("%:h")) . "/"
   call setcmdpos(strlen(cmd)+1)
   return cmd
   " return a:cmd . " " . expand("%:p:h:") . "/"
@@ -390,6 +397,12 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
+"""""""""""""""""""""""""""""""""
+" yankstack
+if has("gui") " mapping to Meta-... only works in gVim
+  nmap <M-p> <Plug>yankstack_substitute_older_paste
+  nmap <M-n> <Plug>yankstack_substitute_newer_paste
+endif
 
 " }}}
 
