@@ -25,3 +25,6 @@
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
 	url = git://github.com/eikevons/xptemplate.git
+[submodule "vim/bundle/vim-yankstack"]
+	path = vim/bundle/vim-yankstack
+	url = git://github.com/maxbrunsfeld/vim-yankstack.git
