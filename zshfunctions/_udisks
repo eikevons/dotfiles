@@ -1,0 +1,57 @@
+#compdef udisks
+
+
+_udisks() {
+  setopt local_options
+  setopt extended_glob
+
+    # '--devices:::->devices' \
+    # '--partanddevices:::->partanddevices' \
+    # '--mounted:::->mounted' \
+    # '--detachable:::->detachable' \
+    # \
+  _arguments \
+    '--dump[dump all information]' \
+    '--enumerate[list all object paths]' \
+    '--enumerate-device-files[list all device files]' \
+    '--monitor[monitor daemon events]' \
+    '--monitor-detail[verbosly monitor daemon events]' \
+    '--show-info[show information]:device file:_files' \
+    '--inhibit-polling[inhibit polling on device]:device file:_files' \
+    '--poll-for-media[perform media detection]:device file:->devices' \
+    '--inhibit-all-polling[inhibit polling on all device]' \
+    '--mount[mount device]:device file:->partanddevices' \
+    '--unmount[unmount device]:device file:->mounted' \
+    '--detach[detach device]:device file:->detachable' \
+    '--eject[eject media]:device file:->devices' \
+    '--ata-smart-refrech[refresh ATA SMART data]:device file:->devices' \
+    '--inhibit[inhibit user interaction]' \
+    {-h,--help}'[show help]'
+  
+  local -a devices
+  case $state in
+    (devices)
+      _values "devices" \
+        ${(o)${(M)$(udisks --enumerate-device-files):#/dev/disk/by-path/*:[0-9]}:A}
+      ;;
+    (partanddevices)
+      _values "partitions and devices" \
+        ${(o)${(M)$(udisks --enumerate-device-files):#/dev/disk/by-id/*}:A}
+      ;;
+    (mounted)
+      _values "mounted devices" \
+        ${(ou)${(M)${${(f)"$(</proc/mounts)"}%% *}:#/dev/*}:A}
+      ;;
+    (detachable)
+      # Heuristically assume that only usb devices are detachable
+      devices=( ${(uo)${(M)$(udisks --enumerate-device-files):#/dev/disk/by-path/*usb*}:A} )
+      if (( $#devices )); then
+        _values "detachable devices" \
+          $devices
+      fi
+      ;;
+  esac
+}
+
+_udisks "$@"
+
