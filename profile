@@ -17,12 +17,12 @@ umask 0022
 
 # handle homeusr stuff
 HOMEUSR="${HOME}/.local"
-if [[ -d $HOMEUSR ]]; then
-    if [[ -d ${HOMEUSR}/bin ]]; then
+if [ -d $HOMEUSR ]; then
+    if [ -d ${HOMEUSR}/bin ]; then
         export PATH="${HOMEUSR}/bin${PATH:+:$PATH}"
     fi
 
-    if [[ -d ${HOMEUSR}/lib ]]; then
+    if [ -d ${HOMEUSR}/lib ]; then
         export LD_LIBRARY_PATH="${HOMEUSR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
 
@@ -36,7 +36,7 @@ if [[ -d $HOMEUSR ]]; then
         # export PYTHONPATH="${HOMEUSR}/lib/python2.5/site-packages/:${PYTHONPATH}"
     # fi
 
-    if [[ -d ${HOMEUSR}/man ]] ; then
+    if [ -d ${HOMEUSR}/man ] ; then
         export MANPATH="${HOMEUSR}/man${MANPATH:+:$MANPATH}"
     fi
 fi
