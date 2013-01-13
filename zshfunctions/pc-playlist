@@ -1,6 +1,6 @@
 pc-playlist () {
   local SANSA_BASE
-  SANSA_BASE="/media/sansa"
+  SANSA_BASE="/media/SANSA CLIPP"
 
   print -l "$SANSA_BASE"/podcasts/*/*(.) | sed "s#^$SANSA_BASE##" | shuf > "$SANSA_BASE/playlists/podcasts.m3u"
 }
