@@ -43,7 +43,7 @@ alias gvi='/usr/bin/gvim --remote-tab-silent'
 
 alias npwget='wget -Yoff'
 
-alias pc-clear='[[ -d "/media/SANSA CLIPP/podcasts" ]] && rm -vrf /media/sansa/playlists/podcasts.m3u /media/sansa/podcasts/* || { print "Player not mounted"; return 1}'
+alias pc-clear='[[ -d "/media/SANSA CLIPP/podcasts" ]] && rm -vrf "/media/SANSA CLIPP/playlists/podcasts.m3u" "/media/SANSA CLIPP/podcasts/"* || { print "Player not mounted"; return 1}'
 alias pc-len="mpginfo \"/media/SANSA CLIPP/podcasts\"/*/*mp3 2>/dev/null  | grep --text Estimated | cut -d ' ' -f 5 | sed -e 's/s$//;s/:/ /' | awk 'BEGIN{s=0;} {s = s + \$1*60 +  \$2;} END{print s/60 \" min\";}'"
 
 alias mp='mplayer'
