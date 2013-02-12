@@ -1,56 +1,73 @@
 #compdef xrandr
-local context state line
+local context state state_descr line
 typeset -A opt_args
-local outputs modes expl
+# local outputs modes expl
+local outputs expl
 
 # User configurable. TODO -- styles?
 # outputs=(LVDS1 TV1 VGA1)
-outputs=(LVDS-1 VGA-1)
-modes=(1280x800 1024x768 800x600 640x480)
+# outputs=(LVDS-1 VGA-1)
+# modes=(1280x800 1024x768 800x600 640x480)
+if (( ! ${+_xrandr_modes} ));
+then
+  typeset -gA _xrandr_modes
+  local last_output l
+  for l in ${(f)"$(xrandr -q)"}; do
+    l=${(z)l}
+    if [[ $l[2] == "connected" ]]; then
+      last_output=$l[1]
+    elif [[ $l[2] == "disconnected" ]]; then
+      last_output=""
+    elif [[ -n $last_output ]]; then
+      _xrandr_modes[$last_output]="$_xrandr_modes[$last_output]${_xrandr_modes[$last_output]+ }$l[1]"
+    fi
+  done
+fi
+outputs=${(k)_xrandr_modes}
 
 _arguments \
-  '(-d -display)'{-d,-display}':X display:_x_display' \
+  '(-d -display)'{-d,-display}'[X display to use]:X display:_x_display' \
   '-help[display help]' \
-  '(-o --orientation)'{-o,--orientation}':rotation:(normal inverted left right 0 1 2 3)' \
+  '(-o --orientation)'{-o,--orientation}'[orientation of screen]:rotation:(normal inverted left right 0 1 2 3)' \
   '(-q --query)'{-q,--query}'[display current state]' \
-  '(-s --size)'{-s,--size}':size:' \
-  '(-r --rate --refresh)'{*-r,*--rate,*--refresh}':target refresh rate:' \
+  '(-s --size)'{-s,--size}'[set screen size]:size:' \
+  '(-r --rate --refresh)'{*-r,*--rate,*--refresh}'[set refresh rate]:target refresh rate:' \
   '(-v --version)'{-v,--version}'[display version]' \
   '-x[reflect across X axis]' \
   '-y[reflect across Y axis]' \
   '--screen:X screen number' \
   '--verbose[be more verbose]' \
-  '--dryrun' \
-  '--nograb' \
+  '--dryrun[make no changes]' \
+  "--nograb[don\'t grab screen]" \
   '(--prop --properties)'{--prop,--properties}'[display the contents of properties for each output]' \
-  '--fb:size:' \
-  '--fbmm:size:' \
-  '--dpi:dpi:' \
-  "*--output:output to reconfigure:($outputs)" \
-  '*--auto' \
-  "*--mode:mode:($modes)" \
-  '*--preferred' \
-  '*--pos:position:' \
-  '*--reflect:axes:(normal x y xy)' \
-  '*--rotate:rotation:(normal inverted left right)' \
-  "*--left-of:relative position to:($outputs)" \
-  "*--right-of:relative position to:($outputs)" \
-  "*--above:relative position to:($outputs)" \
-  "*--below:relative position to:($outputs)" \
-  "*--same-as:relative position to:($outputs)" \
-  '*--set:property:(Backlight scaling\ mode):value:->value' \
-  '*--scale:output scaling:' \
-  '*--transform:transformation matrix:' \
+  '--fb[configure screen size]:size:' \
+  '--fbmm[configure physical screen size]:size:' \
+  '--dpi[configure DPI]:dpi:' \
+  "*--output[configure output]:output to reconfigure:($outputs)" \
+  '*--auto[select preferred mode]' \
+  "*--mode[select mode for output]:output mode:->mode" \
+  '*--preferred[select preferred mode]' \
+  '*--pos[position output]:position:' \
+  '*--reflect[reflect across axes]:axes:(normal x y xy)' \
+  '*--rotate[rotate output]:rotation:(normal inverted left right)' \
+  "*--left-of[position output]:relative position to:($outputs)" \
+  "*--right-of[position output]:relative position to:($outputs)" \
+  "*--above[position output]:relative position to:($outputs)" \
+  "*--below[position output]:relative position to:($outputs)" \
+  "*--same-as[position output]:relative position to:($outputs)" \
+  '*--set[set property]:property:(Backlight scaling\ mode):value:->value' \
+  '*--scale[scale output]:output scaling XxY:' \
+  '*--transform[transform output]:transformation matrix:' \
   '*--off[disable the output]' \
   '*--crtc:crtc to use:' \
-  '*--panning:panning:' \
+  '*--panning[enable panning]:panning:' \
   '*--gamma:r\:g\:b:' \
-  '*--primary' \
+  '*--primary[select output as primary]' \
   '--noprimary' \
-  '*--newmode:name: :clock MHz: :hdisp: :hsync-start: :hsync-end: :htotal: :vdisp: :vsync-start: :vsync-end: :vtotal:' \
-  '*--rmmode:Mode name:' \
-  "*--addmode:output:($outputs):name:" \
-  "*--delmode:output:($outputs):name:" \
+  '*--newmode[add new mode line]:name: :clock MHz: :hdisp: :hsync-start: :hsync-end: :htotal: :vdisp: :vsync-start: :vsync-end: :vtotal:' \
+  '*--rmmode[remove mode line]:Mode name:' \
+  "*--addmode[add new mode to output]:output:($outputs):name:" \
+  "*--delmode[remove mode from output]:output:($outputs):name:" \
   && return 0
 
 if [[ $state == value ]]; then
@@ -60,4 +77,15 @@ if [[ $state == value ]]; then
 	    compadd "$@" "$expl[@]" None Full Center Full\ aspect && return 0
 	    ;;
     esac
+elif [[ $state == mode ]]; then
+    local i=1
+    while (( CURRENT - i > 2 )); do
+        if [[ $words[CURRENT-1-i] == "--output" ]]; then
+            last_output=$words[CURRENT-i]
+            break
+        fi
+        (( i += 1 ))
+    done
+    _description -V mode expl "output mode"
+    compadd "$@" "$expl[@]" ${(z)_xrandr_modes[$last_output]} && return 0
 fi
