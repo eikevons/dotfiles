@@ -2,13 +2,15 @@
 local context state state_descr line
 typeset -A opt_args
 local expl
-local last_output l outputs
+local outputs
 
 # TODO: This creates a global variable to cache the available outputs. 
 if [[ $_xr_HISTNO != $HISTNO ]];
 then
   _xr_HISTNO=$HISTNO
   typeset -gA _xr_modes 
+  _xr_modes=()
+  local last_output l
   for l in ${(f)"$(xrandr -q)"}; do
     l=${(z)l}
     if [[ $l[2] == "connected" ]]; then
@@ -75,7 +77,7 @@ if [[ $state == value ]]; then
 	    ;;
     esac
 elif [[ $state == mode ]]; then
-    local i=1
+    local i=1 last_output
     while (( CURRENT - i > 2 )); do
         if [[ $words[CURRENT-1-i] == "--output" ]]; then
             last_output=$words[CURRENT-i]
