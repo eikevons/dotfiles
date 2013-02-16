@@ -1,16 +1,15 @@
 #compdef xrandr
 local context state state_descr line
 typeset -A opt_args
-# local outputs modes expl
-local outputs expl
+local expl
+local outputs
 
-# User configurable. TODO -- styles?
-# outputs=(LVDS1 TV1 VGA1)
-# outputs=(LVDS-1 VGA-1)
-# modes=(1280x800 1024x768 800x600 640x480)
-if (( ! ${+_xrandr_modes} ));
+# TODO: This creates a global variable to cache the available outputs. 
+if [[ $_xr_HISTNO != $HISTNO ]];
 then
-  typeset -gA _xrandr_modes
+  _xr_HISTNO=$HISTNO
+  typeset -gA _xr_modes 
+  _xr_modes=()
   local last_output l
   for l in ${(f)"$(xrandr -q)"}; do
     l=${(z)l}
@@ -19,11 +18,11 @@ then
     elif [[ $l[2] == "disconnected" ]]; then
       last_output=""
     elif [[ -n $last_output ]]; then
-      _xrandr_modes[$last_output]="$_xrandr_modes[$last_output]${_xrandr_modes[$last_output]+ }$l[1]"
+      _xr_modes[$last_output]="$_xr_modes[$last_output]${_xr_modes[$last_output]+ }$l[1]"
     fi
   done
 fi
-outputs=${(k)_xrandr_modes}
+outputs=${(k)_xr_modes}
 
 _arguments \
   '(-d -display)'{-d,-display}'[X display to use]:X display:_x_display' \
@@ -78,7 +77,7 @@ if [[ $state == value ]]; then
 	    ;;
     esac
 elif [[ $state == mode ]]; then
-    local i=1
+    local i=1 last_output
     while (( CURRENT - i > 2 )); do
         if [[ $words[CURRENT-1-i] == "--output" ]]; then
             last_output=$words[CURRENT-i]
@@ -87,5 +86,5 @@ elif [[ $state == mode ]]; then
         (( i += 1 ))
     done
     _description -V mode expl "output mode"
-    compadd "$@" "$expl[@]" ${(z)_xrandr_modes[$last_output]} && return 0
+    compadd "$@" "$expl[@]" ${(z)_xr_modes[$last_output]} && return 0
 fi
