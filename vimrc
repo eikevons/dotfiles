@@ -256,6 +256,7 @@ au BufRead ~/.zshfunctions/* set ft=zsh
 " (add mappings to normal/visual => nor... 
 "  or insert => inor... )
 "
+nnoremap \ ,
 let mapleader = ","
 let maplocalleader = ","
 
