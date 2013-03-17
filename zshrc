@@ -309,8 +309,7 @@ add-zsh-hook precmd vcs_info
 function update_color_settings () {
   local col_normal col_time col_path col_host col_retcode
 
-  # if [[ -z $SSH_CONNECTION ]]; then
-  if [[ $HOST == matzbach || $HOST == marlov ]]; then
+  if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" && -z "$SSH_CONNECTION" ]]; then
     if [[ ${background} == "dark" ]]; then
       col_normal="%F{grey}%b%k"
       col_time="%B%F{red}"
