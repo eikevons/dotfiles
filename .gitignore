@@ -5,6 +5,7 @@
 *.swp
 .svn
 .git
+*.pyc
 
 ## Vim specific rules
 
