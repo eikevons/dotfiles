@@ -52,12 +52,14 @@ URxvt.cursorBlink: false
 ! URxvt*shading: 60
 URxvt.fading: 15
 
-URxvt.mapAlert:   true
-!URxvt.visualBell: true
-
 URxvt.scrollBar: True
 URxvt.saveLines: 8000
 URxvt.loginShell: True
+
+! Hint the window as urgent on bell for window manager.
+URxvt.urgentOnBell: True
+URxvt.visualBell: True
+URxvt.mapAlert:   true
 
 ! Plugin stuff
 URxvt*urlLauncher: iceweasel
