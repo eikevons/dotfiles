@@ -35,6 +35,30 @@ fi
   # }
   # chpwd_functions=( $chpwd_functions add_z_directory )
 # fi
+
+# Log the runtime of long-running processes and send a notification.
+# See <https://github.com/marzocchi/zsh-notify/blob/master/notify.plugin.zsh>
+function log_long_running_preexec() {
+  last_command="$1"
+  start_time=$EPOCHSECONDS
+}
+
+function log_long_running_precmd() {
+  if (( start_time )) && (( EPOCHSECONDS - start_time > 300 )); then
+    local message
+    message="'$last_command' took $(( EPOCHSECONDS - start_time )) secs"
+    print "$(strftime "%F %T" $start_time)  $message" >> ${HOME}/log_long_running
+    if (( $+commands[notify-send] )); then
+      notify-send $lastcommand $message &
+    fi
+  fi
+}
+
+zmodload zsh/datetime
+add-zsh-hook preexec log_long_running_preexec
+add-zsh-hook precmd log_long_running_precmd
+
+
 ## }}}
 ## Shell behaviour. {{{
 ##
@@ -236,21 +260,6 @@ fi
 ## }}}
 ## Email warnings. {{{
 ##
-mailpath=(
-~/Mail/alps/new/"?Neue Nachricht in alps/"
-~/Mail/inbox/new/"?Neue Nachricht in inbox/"
-~/Mail/freunde/new/"?Neue Nachricht in freunde/"
-~/Mail/eichelle/new/"?Neue Nachricht in eichelle/"
-~/Mail/local/new/"?Neue Nachricht in local/"
-~/Mail/physik/new/"?Neue Nachricht in physik/"
-~/Mail/dresden/new/"?Neue Nachricht in dresden/"
-~/Mail/professor/new/"?Neue Nachricht in professor/"
-~/Mail/zsh/new/"?Neue Nachricht in zsh/"
-)
-
-export MAILPATH
-export MAILCHECK=30
-setopt mailwarning
 ## }}}
 ## Aliases, named directories and behaviour of external programmes {{{
 ##
