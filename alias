@@ -48,6 +48,7 @@ alias pc-len="mpginfo \"/media/SANSA CLIPP/podcasts\"/*/*mp3 2>/dev/null  | grep
 
 alias mp='mplayer'
 alias kika='vlc http://85.239.122.162/mk3w-3faw-3rqf-enc0-kika'
+alias my='mutt -y'
 
 alias svnstatus='svn status | grep --color=never "^[^?]\|py$"'
 
