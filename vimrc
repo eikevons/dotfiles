@@ -199,7 +199,7 @@ let g:xptemplate_vars = "SParg="
 
 """""""""""""""""""""""""""""""""
 " Powerline
-let g:Powerline_symbols = "fancy"
+let g:Powerline_symbols = "unicode"
 let g:Powerline_stl_path_style = "short"
 
 """""""""""""""""""""""""""""""""
