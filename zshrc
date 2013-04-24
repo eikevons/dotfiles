@@ -38,25 +38,29 @@ fi
 
 # Log the runtime of long-running processes and send a notification.
 # See <https://github.com/marzocchi/zsh-notify/blob/master/notify.plugin.zsh>
-function log_long_running_preexec() {
-  last_command="$1"
-  start_time=$EPOCHSECONDS
-}
+# function log_long_running_preexec() {
+  # last_command="$1"
+  # if [[ -n $last_command ]]; then 
+    # start_time=$EPOCHSECONDS
+  # else
+    # start_time=0
+  # fi
+# }
 
-function log_long_running_precmd() {
-  if (( start_time )) && (( EPOCHSECONDS - start_time > 300 )); then
-    local message
-    message="'$last_command' took $(( EPOCHSECONDS - start_time )) secs"
-    print "$(strftime "%F %T" $start_time)  $message" >> ${HOME}/log_long_running
-    if (( $+commands[notify-send] )); then
-      notify-send $lastcommand $message &
-    fi
-  fi
-}
+# function log_long_running_precmd() {
+  # if (( start_time )) && (( EPOCHSECONDS - start_time > 300 )); then
+    # local message
+    # message="'$last_command' took $(( EPOCHSECONDS - start_time )) secs"
+    # print "$(strftime "%F %T" $start_time)  $message" >> ${HOME}/log_long_running
+    # if (( $+commands[notify-send] )); then
+      # notify-send $lastcommand $message &
+    # fi
+  # fi
+# }
 
-zmodload zsh/datetime
-add-zsh-hook preexec log_long_running_preexec
-add-zsh-hook precmd log_long_running_precmd
+# zmodload zsh/datetime
+# add-zsh-hook preexec log_long_running_preexec
+# add-zsh-hook precmd log_long_running_precmd
 
 
 ## }}}
