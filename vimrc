@@ -40,7 +40,7 @@ endif
 
 " backup, but don't backup if file is in .../bin
 set backup
-au BufRead */bin/*,*/sbin/*,/media/sansa/* set nobackup
+au BufRead */bin/*,*/sbin/*,/media/SANSA\ CLIPP/* set nobackup
 
 " new builtin vim spell checking
 set spelllang=de,en
