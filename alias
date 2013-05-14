@@ -43,9 +43,6 @@ alias gvi='/usr/bin/gvim --remote-tab-silent'
 
 alias npwget='wget -Yoff'
 
-alias pc-clear='[[ -d "/media/SANSA CLIPP/podcasts" ]] && rm -vrf "/media/SANSA CLIPP/playlists/podcasts.m3u" "/media/SANSA CLIPP/podcasts/"* || { print "Player not mounted"; return 1}'
-alias pc-len="mpginfo \"/media/SANSA CLIPP/podcasts\"/*/*mp3 2>/dev/null  | grep --text Estimated | cut -d ' ' -f 5 | sed -e 's/s$//;s/:/ /' | awk 'BEGIN{s=0;} {s = s + \$1*60 +  \$2;} END{print s/60 \" min\";}'"
-
 alias mp='mplayer'
 alias kika='vlc http://85.239.122.162/mk3w-3faw-3rqf-enc0-kika'
 alias my='mutt -y'
@@ -56,6 +53,11 @@ alias dfu='diff -u'
 
 # suffix aliases for zsh
 if [[ -n $ZSH_VERSION ]]; then
+  SANSABASE="/media/SANSA CLIPP"
+  alias pc-clear="[[ -d '$SANSABASE/podcasts' ]] && rm -vrf '$SANSABASE/playlists/podcasts.m3u' '$SANSABASE/podcasts/'* || { print 'Player not mounted'; return 1}"
+  alias pc-len="mpginfo '$SANSABASE'/podcasts/**/*.mp3 2>/dev/null  | grep --text Estimated | cut -d ' ' -f 5 | sed -e 's/s$//;s/:/ /' | awk 'BEGIN{s=0;} {s = s + \$1*60 +  \$2;} END{print s/60 \" min\";}'"
+  unset SANSABASE
+
   # documents
   alias -s ps=okular
   alias -s pdf=okular

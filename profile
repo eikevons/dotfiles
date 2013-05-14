@@ -7,7 +7,7 @@ umask 0022
 # that ':' is only added if $VAR_NAME was previously set.
 
 # # This is needed by pyminuit to work
-# if [[ -d /usr/lib/root/5.18 ]]; then
+# if [ -d /usr/lib/root/5.18 ]; then
     # # EIKE: This shouldn't be necessary anymore, put into
     # # /etc/ld.so.conf.d/root-system-common.conf instead.
     # # export LD_LIBRARY_PATH="/usr/lib/root/5.18:${LD_LIBRARY_PATH}"
@@ -26,13 +26,13 @@ if [ -d $HOMEUSR ]; then
         export LD_LIBRARY_PATH="${HOMEUSR}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
 
-    # if [[ -d ${HOMEUSR}/lib/python ]] ; then
+    # if [ -d ${HOMEUSR}/lib/python ] ; then
         # export PYTHONPATH="${HOMEUSR}/lib/python${PYTHONPATH:+:$PYTHONPATH}"
     # fi
 
     # This is not needed anymore since .../python2.5/site-packages links to
     # .../python/
-    # if [[ -d ${HOMEUSR}/lib/python2.5/site-packages/ ]] ; then
+    # if [ -d ${HOMEUSR}/lib/python2.5/site-packages/ ] ; then
         # export PYTHONPATH="${HOMEUSR}/lib/python2.5/site-packages/:${PYTHONPATH}"
     # fi
 
@@ -41,6 +41,6 @@ if [ -d $HOMEUSR ]; then
     fi
 fi
 
-# if [[ -d ${HOME}/projects/rivet/helpers/generators/liblinks ]]; then
+# if [ -d ${HOME}/projects/rivet/helpers/generators/liblinks ]; then
     # export AGILE_GEN_PATH=${HOME}/projects/rivet/helpers/generators/liblinks
 # fi

@@ -29,7 +29,6 @@ _udisks() {
     {-h,--help}'[show help]'
   
   local -a devices
-  # TODO: Use _canonical_paths instead?
   case $state in
     (devices)
       _values "devices" \
