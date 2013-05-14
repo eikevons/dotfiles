@@ -28,3 +28,5 @@ gnupg/*bak
 gnupg/secring.gpg
 gnupg/trustdb.gpg
 gnupg/private*
+
+vim/spell/
