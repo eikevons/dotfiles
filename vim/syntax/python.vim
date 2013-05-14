@@ -266,53 +266,42 @@ syn match pythonStrTemplate	"\$[a-zA-Z_][a-zA-Z0-9_]*" contained containedin=pyt
 " Sync at the beginning of class, function, or method definition.
 syn sync match pythonSync grouphere NONE "^\s*\%(def\|class\)\s\+\h\w*\s*("
 
-if version >= 508 || !exists("did_python_syn_inits")
-  if version <= 508
-    let did_python_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
-
-  " The default highlight links.  Can be overridden later.
-  HiLink pythonStatement	Statement
-  HiLink pythonConditional	Conditional
-  HiLink pythonRepeat		Repeat
-  HiLink pythonOperator		Operator
-  HiLink pythonException	Exception
-  HiLink pythonInclude		Include
-  HiLink pythonDecorator	Define
-  HiLink pythonFunction		Function
-  HiLink pythonComment		Comment
-  HiLink pythonTodo		Todo
-  HiLink pythonString		String
-  HiLink pythonRawString	String
-  HiLink pythonEscape		Special
-  if !exists("python_no_number_highlight")
-    HiLink pythonNumber		Number
-  endif
-  if !exists("python_no_builtin_highlight")
-    HiLink pythonBuiltin	Function
-  endif
-  if !exists("python_no_exception_highlight")
-    HiLink pythonExceptions	Structure
-  endif
-  if exists("python_space_error_highlight")
-    HiLink pythonSpaceError	Error
-  endif
-  if !exists("python_no_doctest_highlight")
-    HiLink pythonDoctest	Special
-    HiLink pythonDoctestValue	Define
-  endif
-
-  " EIKE: Highlight formats in strings (see line +235)
-  " Copied from: <http://www.hlabs.spb.ru/vim/python.vim>
-  HiLink pythonStrFormatting	Special
-  HiLink pythonStrFormat    	Special
-  HiLink pythonStrTemplate	Special
-
-  delcommand HiLink
+" The default highlight links.  Can be overridden later.
+hi def link pythonStatement	Statement
+hi def link pythonConditional	Conditional
+hi def link pythonRepeat		Repeat
+hi def link pythonOperator		Operator
+hi def link pythonException	Exception
+hi def link pythonInclude		Include
+hi def link pythonDecorator	Define
+hi def link pythonFunction		Function
+hi def link pythonComment		Comment
+hi def link pythonTodo		Todo
+hi def link pythonString		String
+hi def link pythonRawString	String
+hi def link pythonEscape		Special
+if !exists("python_no_number_highlight")
+  hi def link pythonNumber		Number
 endif
+if !exists("python_no_builtin_highlight")
+  hi def link pythonBuiltin	Function
+endif
+if !exists("python_no_exception_highlight")
+  hi def link pythonExceptions	Structure
+endif
+if exists("python_space_error_highlight")
+  hi def link pythonSpaceError	Error
+endif
+if !exists("python_no_doctest_highlight")
+  hi def link pythonDoctest	Special
+  hi def link pythonDoctestValue	Define
+endif
+
+" EIKE: Highlight formats in strings (see line +235)
+" Copied from: <http://www.hlabs.spb.ru/vim/python.vim>
+hi def link pythonStrFormatting	Special
+hi def link pythonStrFormat    	Special
+hi def link pythonStrTemplate	Special
 
 
 " EIKE: Use C/C++ syntax in weave strings.
