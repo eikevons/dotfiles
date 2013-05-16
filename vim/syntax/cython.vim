@@ -15,7 +15,7 @@ else
 endif
 
 " Pyrex extentions
-syn keyword pyrexStatement      cdef typedef ctypedef sizeof
+syn keyword pyrexStatement      cdef cpdef typedef ctypedef sizeof
 syn keyword pyrexType		int long short float double char object void
 syn keyword pyrexType		signed unsigned
 syn keyword pyrexStructure	struct union enum
