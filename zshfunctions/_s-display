@@ -6,6 +6,7 @@ _s_display() {
     'movie[Enable movie mode, i.e. disable screens saver and DPMS]' \
     'audio[Enable audio mode, i.e. disable screens saver]' \
     'office[Enable office mode]' \
+    'extern[Enable extern only]' \
     'lock[Lock screen]' \
     'off[Turn display off]' \
     'status[Print the status of DPMS and screen saver]'
