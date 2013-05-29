@@ -23,11 +23,6 @@ if [[ -d "${HOME}/.zshfunctions" ]]; then
     autoload ${fpath[1]}/[a-zA-Z]*[^~](:t)
 fi
 
-if [[ -f "${HOME}/src/fasd/fasd" ]]; then
-  source "${HOME}/src/fasd/fasd" 
-  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
-fi
-
 # if [[ -f "${HOME}/src/z/z.sh" ]]; then
   # source "${HOME}/src/z/z.sh" 
   # add_z_directory () {
@@ -90,9 +85,6 @@ bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "\e." insert-last-word
 whence changecolors &>/dev/null && bindkey -s "[24~" "changecolors"  # use the same change-color key binding as in vim
-
-# fasd
-whence fasd &> /dev/null && bindkey "^F" fasd-complete-f 
 
 bindkey "^X^H" _complete_help
 bindkey -s "^X^F" "\"./\"OD"
@@ -170,14 +162,14 @@ zstyle ':completion:*' group-name ''
 # See Zsh Guide chapter 6.2.3
 zstyle ':completion:*' menu select=6
 
-if whence fasd &>/dev/null ; then
-  # See fasd +194 (complete fasd output)
-  zstyle ':completion:*' completer _complete _fasd_zsh_word_complete_trigger _approximate
-else
+# if whence fasd &>/dev/null ; then
+  # # See fasd +194 (complete fasd output)
+  # zstyle ':completion:*' completer _complete _fasd_zsh_word_complete _approximate
+# else
   # See man zshcompsys +2490 (complete approximate items if nothing else is
   # found)
   zstyle ':completion:*' completer _complete _approximate
-fi
+# fi
 
 # Make completion case-insensitive in case of no matches
 # See man zshcompsys +1747
@@ -274,6 +266,13 @@ if [[ -f  $DIRCOLORS ]]; then
     eval `dircolors $DIRCOLORS`
 else
     eval `dircolors -b`
+fi
+
+
+if [[ -f "${HOME}/src/fasd/fasd" ]]; then
+  source "${HOME}/src/fasd/fasd" 
+  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-wcomp zsh-ccomp-install zsh-wcomp-install)"
+  bindkey "^F" fasd-complete-f 
 fi
 
 # Use colorized file names for completion.
