@@ -209,8 +209,15 @@ let g:Powerline_stl_path_style = "short"
 let g:yankstack_map_keys = 0
 
 """""""""""""""""""""""""""""""""
+" Syntastic
+let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list=1
+
+
+"""""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " }}}
 """""""""""""""""""""""""""""""""
@@ -406,6 +413,5 @@ if has("gui") " mapping to Meta-... only works in gVim
 endif
 
 " }}}
-
 
 " vim: foldmethod=marker
