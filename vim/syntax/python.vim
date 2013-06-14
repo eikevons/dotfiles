@@ -74,7 +74,7 @@ set cpo&vim
 syn keyword pythonStatement	False, None, True
 syn keyword pythonStatement	as assert break continue del exec global
 syn keyword pythonStatement	lambda nonlocal pass print return with yield
-syn keyword pythonStatement	class def nextgroup=pythonFunction skipwhite
+syn keyword pythonStatement	class def nextgroup=pythonFunction skipwhite contained
 syn keyword pythonConditional	elif else if
 syn keyword pythonRepeat	for while
 syn keyword pythonOperator	and in is not or
@@ -312,39 +312,36 @@ syn include @CPP syntax/cpp.vim
 syn region cppString matchgroup=pythonString start=+\z("""\|'''\)\s*//\s*[cC]+ end=+\z1+ contains=@CPP containedin=ALL keepend
 
 
-" EIKE: Syntax folds
+" EIKE:
+" Syntax folds
+" ------------
+" Fold class and function bodies and doc strings.
+"
+" Because of how to end the regions for indented and non-indented
+" class/function definition two differen regions are defined.
+
 setlocal fdm=syntax
-
-" Nested function and class definitions
-syn region  pythonFoldDefinitionsNested
-  \ start="^\z(\s\+\)\%(def\|class\)\>"
-  \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!."
-  \ fold transparent
-
-hi link pythonDefinition Statement
-
-" TODO: This does not work with 0-level functions and classes because only one
-" syntax object is allowd to start at each position and this interferes with
-"
-" syn keyword pythonStatement	class def nextgroup=pythonFunction skipwhite
-"
-" above.
-"
-" The following rule works but includes the preceding line in the fold.
-" Extending the pattern to the following line does not work.
-
-" Top-level function and class definitions
-" NOTE: \h instead of a-zA-Z_ does not work in end="..."
-syn region  pythonFoldDefinitionsTopLevel
-  \ start="\n\%(def\|class\)"
-  \ end="\ze\%(\s*\n\)\+[a-zA-Z_#@]"
-  \ fold transparent
 
 " Fold multi-line doc strings
 syn region pythonFoldDocstrings
   \ start=+^\s*[rRuU]\?\(\z("""\|'''\)\).*\(.*\1\)\@<!$+
   \ end=+\z1$+
   \ fold keepend transparent
+
+" Nested function and class definitions
+syn region  pythonFoldDefinitionsIndented
+  \ start="^\z(\s\+\)\%(\%(def\|class\)\s\)"
+  \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!."
+  \ fold transparent contained
+
+" Top-level function and class definitions
+" NOTES: - \h instead of a-zA-Z_ does not work in end="..."
+"        - we must remove pythonDoctestValue from the
+"          contains=... list because it matches the whole body otherwise.
+syn region  pythonFoldDefinitionsTopLevel
+  \ start="^\%(\%(def\|class\)\>\)"
+  \ end="\ze\%(\s*\n\)\+[a-zA-Z_#@]"
+  \ fold transparent contains=ALLBUT,pythonDoctestValue
 
 
 let b:current_syntax = "python"
