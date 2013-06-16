@@ -43,3 +43,4 @@ nnoremap <silent> <buffer> K :let oisk=&isk<CR>:set isk+=.<CR>:let mykw = expand
 " Set-up synstatic
 " nnoremap <silent> <buffer> ]s :ll<CR>
 nnoremap <silent> <buffer> ]s :lnext<CR>
+nnoremap <silent> <buffer> [s :lprev<CR>
