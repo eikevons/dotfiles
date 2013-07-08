@@ -353,8 +353,21 @@ nnoremap <F10> :set list!<CR>
 inoremap <F10> <Esc>:set list!<CR>a
 
 " toggle line numbering
-nnoremap <F11> :set number!<CR>
-inoremap <F11> <Esc>:set number!<CR>a
+function ToggleNumber()
+  if &number
+    set nonumber
+    set relativenumber
+  elseif &relativenumber
+    set nonumber
+    set norelativenumber
+  else
+    set number
+    set norelativenumber
+  endif
+endfunction
+
+nnoremap <F11> :call ToggleNumber()<CR>
+inoremap <F11> <Esc>:call ToggleNumber()<CR>a
 
 " toggle dark and light colorscheme
 nnoremap <F12> :call ToggleColorScheme()<CR>
