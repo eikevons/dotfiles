@@ -108,7 +108,7 @@ let g:sh_fold_enabled= 1
 
 if $background == "light"
   set background=light
-  colo sosoeike
+  colo SolarizedLight_eike
 else
   set background=dark
   colo molokaieike
@@ -131,10 +131,10 @@ syntax on
 
 " TODO: Change background in terminal aswell.
 function ToggleColorScheme()
-  if g:colors_name == "sosoeike"
+  if g:colors_name == "SolarizedLight_eike"
     colo molokaieike
   else
-    colo sosoeike
+    colo SolarizedLight_eike
   endif
 endfunction
 
