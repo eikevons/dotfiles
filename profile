@@ -41,6 +41,9 @@ if [ -d $HOMEUSR ]; then
     fi
 fi
 
+# For bibsync <https://github.com/minad/bibsync>
+export GEM_HOME=$HOME/.gem/
+
 # if [ -d ${HOME}/projects/rivet/helpers/generators/liblinks ]; then
     # export AGILE_GEN_PATH=${HOME}/projects/rivet/helpers/generators/liblinks
 # fi
