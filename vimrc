@@ -40,7 +40,10 @@ endif
 
 " backup, but don't backup if file is in .../bin
 set backup
-au BufRead */bin/*,*/sbin/*,/media/SANSA\ CLIPP/* set nobackup
+au BufRead */bin/*,*/sbin/*,/media/SANSA\ CLIPP/* setlocal nobackup
+
+" Save undo files for files in my home directory
+au BufRead $HOME/* setlocal undofile
 
 " new builtin vim spell checking
 set spelllang=de,en
