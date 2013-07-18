@@ -41,6 +41,7 @@ endif
 " Save undo files for files in my home directory this should make backups
 " unnecessary
 au BufRead $HOME/* setlocal undofile
+let g:undotree_DiffCommand = "diff -u"
 set nobackup
 
 " new builtin vim spell checking
