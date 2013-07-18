@@ -31,3 +31,6 @@
 [submodule "vim/bundle/vim-seek"]
 	path = vim/bundle/vim-seek
 	url = https://github.com/goldfeld/vim-seek.git
+[submodule "vim/bundle/undotree"]
+	path = vim/bundle/undotree
+	url = https://github.com/eikevons/undotree.git
