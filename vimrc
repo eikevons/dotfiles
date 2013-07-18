@@ -38,12 +38,10 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" backup, but don't backup if file is in .../bin
-set backup
-au BufRead */bin/*,*/sbin/*,/media/SANSA\ CLIPP/* setlocal nobackup
-
-" Save undo files for files in my home directory
+" Save undo files for files in my home directory this should make backups
+" unnecessary
 au BufRead $HOME/* setlocal undofile
+set nobackup
 
 " new builtin vim spell checking
 set spelllang=de,en
