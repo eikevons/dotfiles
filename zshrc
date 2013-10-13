@@ -215,9 +215,9 @@ fignore=(.o .toc .lot .lof .blg .bbl .bak .BAK .sav .old .trace)
 ## Set my prefered editor. {{{
 ##
 if [[ -n "$DISPLAY" ]] ;then
-    export VISUAL="gvim -f"
+    export VISUAL="vim"
     # export BROWSER="midori"
-    export EDITOR="gvim -f"
+    export EDITOR="vim"
     export FCEDIT="vim"
 else
     # export BROWSER="links"
