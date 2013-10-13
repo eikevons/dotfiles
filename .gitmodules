@@ -34,3 +34,6 @@
 [submodule "vim/bundle/undotree"]
 	path = vim/bundle/undotree
 	url = https://github.com/eikevons/undotree.git
+[submodule "vim/bundle/jinja2-syntax"]
+	path = vim/bundle/jinja2-syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
