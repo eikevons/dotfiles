@@ -197,6 +197,11 @@ zstyle ':completion:*:complete:gvim:option-S-1:*' file-patterns \
     '*.vim:session-files:session\ files' \
     '*(-/):directories:directories'
 
+# prefere ~/.ssh/id_* files for identity files
+zstyle ':completion::complete:ssh-add:argument-rest:' file-patterns \
+  'id_^*.pub:identity-files' \
+  '%p:all-files'
+
 compdef '_files -g "*.{pdf,ps,dvi}"' evince
 
 compdef _gnu_generic k3b
