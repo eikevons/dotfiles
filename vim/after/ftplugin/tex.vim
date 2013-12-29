@@ -25,8 +25,9 @@ let g:Tex_Env_displaymath="%\<CR>\\begin{equation*}\<CR><++>\<CR>\\end{equation*
 let g:Tex_Env_figure="%\<CR>\\begin{figure}\<CR>\\centering\<CR>\\includegraphics[width=<+width+>]{<+graphics file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}\<CR>%\<CR><++>"
 
 " for beamer class
-call IMAP("BFR", "\\begin{frame}{<+title+>}\<CR><++>\<CR>\\end{frame}", "tex")
-call IMAP("BBK", "\\begin{block}{<+title+>}\<CR><++>\<CR>\\end{block}", "tex")
+call IMAP("FRA", "\\begin{frame}{<+title+>}\<CR><++>\<CR>\\end{frame}", "tex")
+call IMAP("BFR", "\\begin{backupframe}{<+title+>}\<CR><++>\<CR>\\end{backupframe}", "tex")
+call IMAP("BLK", "\\begin{block}{<+title+>}\<CR><++>\<CR>\\end{block}", "tex")
 
 " also fold at xparagraphs
 let Tex_FoldedSections="part,chapter,section,%%fakesection,subsection,subsubsection,paragraph,xparagraph"
