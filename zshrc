@@ -245,7 +245,7 @@ compdef wget robget
 zstyle ':completion:*:processes-names' command \
     'ps c -u ${USER} -o command | uniq'
 
-fignore=(.o .toc .lot .lof .blg .bbl .bak .BAK .sav .old .trace)
+fignore=(.o .toc .lot .lof .bak .BAK .sav .old .trace)
 
 ## }}}
 ## Set my prefered editor. {{{
@@ -319,6 +319,9 @@ zstyle ':vcs_info:*' disable-patterns \
 
 add-zsh-hook precmd vcs_info
 
+# append environment indicators to this variable
+typeset -a loaded_environments
+
 function update_color_settings () {
   local col_normal col_time col_path col_host col_retcode
 
@@ -358,7 +361,7 @@ function update_color_settings () {
     fi
   fi
 
-  PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}
+  PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}\${loaded_environments:+ <}\${(j:|:)loaded_environments}\${loaded_environments:+>}
 %# "
   # RPROMPT='${vcs_info_msg_0_}'
 }
