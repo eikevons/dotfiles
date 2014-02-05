@@ -25,6 +25,7 @@ set hidden
 
 " searching 
 set ignorecase
+set incsearch
 " Switch off case insensitive matching if pattern contains upper case
 " characters.
 set smartcase
@@ -108,12 +109,16 @@ let g:sh_fold_enabled= 1
 " colorscheme buttercream
 " set background=light
 
-if $background == "light"
-  set background=light
+if has("gui_running")
   colo SolarizedLight_eike
 else
-  set background=dark
-  colo molokaieike
+  if $background == "light"
+    set background=light
+    colo SolarizedLight_eike
+  else
+    set background=dark
+    colo molokaieike
+  endif
 endif
 
 hi Cursor guifg=White guibg=Red ctermfg=Green
