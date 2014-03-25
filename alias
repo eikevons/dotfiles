@@ -51,6 +51,9 @@ alias svnstatus='svn status | grep --color=never "^[^?]\|py$"'
 
 alias dfu='diff -u'
 
+# debug power consumption in hibernate mode
+alias hibernate='{ echo platform | sudo tee /sys/power/disk ; cat /sys/power/disk;  date; acpi -ab ;} | tee batt_status ; sudo pm-hibernate; { date; acpi -ab; } | tee -a batt_status'
+
 # suffix aliases for zsh
 if [[ -n $ZSH_VERSION ]]; then
   SANSABASE="/media/SANSA CLIPP"
