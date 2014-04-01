@@ -10,6 +10,7 @@ nt () {
   else
     if [[ -z $NTREF ]]; then
       print "NTREF not set: Use nt ref FILENAME" > /dev/stderr 
+      print "and then e.g.: print -l *(+nt)" > /dev/stderr
       return 1
     fi
     [[ $REPLY -nt $NTREF ]]
