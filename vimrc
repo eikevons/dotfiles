@@ -80,9 +80,9 @@ set scrolloff=3
 if has("gui_running")
   " set guifont=Monospace\ 9
   " set guifont=Liberation\ Mono\ 8.5
-  " set guifont=Terminus\ 10
   " set guifont=DejaVu\ Sans\ Mono\ 9
   set guifont=Inconsolata\ for\ Powerline\ 9
+  " set guifont=Terminus\ 8
   set guioptions-=T
   set guioptions+=c
   set cursorline
@@ -110,6 +110,7 @@ let g:sh_fold_enabled= 1
 " set background=light
 
 if has("gui_running")
+  set background=light
   colo SolarizedLight_eike
 else
   if $background == "light"
@@ -207,7 +208,7 @@ let g:xptemplate_vars = "SParg="
 
 """""""""""""""""""""""""""""""""
 " Powerline
-let g:Powerline_symbols = "fancy"
+let g:Powerline_symbols = "unicode"
 let g:Powerline_stl_path_style = "short"
 
 """""""""""""""""""""""""""""""""
@@ -271,6 +272,7 @@ au BufRead ~/.zshfunctions/* set ft=zsh
 " (add mappings to normal/visual => nor... 
 "  or insert => inor... )
 "
+nnoremap \ ,
 let mapleader = ","
 let maplocalleader = ","
 

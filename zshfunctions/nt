@@ -1,0 +1,20 @@
+# Use this as glob qualifier as:
+# % nt ref FILENAME
+# % print -l *(+nt)
+# to list all files newer than FILENAME.
+#
+# See bottom of man zshexpn(1)
+nt () {
+  if [[ $# == 2 && $1 == "ref" ]]; then
+    export NTREF=$2
+  else
+    if [[ -z $NTREF ]]; then
+      print "NTREF not set: Use nt ref FILENAME" > /dev/stderr 
+      print "and then e.g.: print -l *(+nt)" > /dev/stderr
+      return 1
+    fi
+    [[ $REPLY -nt $NTREF ]]
+  fi
+}
+
+# vim: ft=zsh

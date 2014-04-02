@@ -23,11 +23,6 @@ if [[ -d "${HOME}/.zshfunctions" ]]; then
     autoload ${fpath[1]}/[a-zA-Z]*[^~](:t)
 fi
 
-if [[ -f "${HOME}/src/fasd/fasd" ]]; then
-  source "${HOME}/src/fasd/fasd" 
-  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)"
-fi
-
 # if [[ -f "${HOME}/src/z/z.sh" ]]; then
   # source "${HOME}/src/z/z.sh" 
   # add_z_directory () {
@@ -119,9 +114,6 @@ bindkey "^R" history-incremental-search-backward
 bindkey "\e." insert-last-word
 whence changecolors &>/dev/null && bindkey -s "[24~" "changecolors"  # use the same change-color key binding as in vim
 
-# fasd
-whence fasd &> /dev/null && bindkey "^F" fasd-complete-f 
-
 bindkey "^X^H" _complete_help
 bindkey -s "^X^F" "\"./\"OD"
 
@@ -198,14 +190,14 @@ zstyle ':completion:*' group-name ''
 # See Zsh Guide chapter 6.2.3
 zstyle ':completion:*' menu select=6
 
-if whence fasd &>/dev/null ; then
-  # See fasd +194 (complete fasd output)
-  zstyle ':completion:*' completer _complete _fasd_zsh_word_complete_trigger _approximate
-else
+# if whence fasd &>/dev/null ; then
+  # # See fasd +194 (complete fasd output)
+  # zstyle ':completion:*' completer _complete _fasd_zsh_word_complete _approximate
+# else
   # See man zshcompsys +2490 (complete approximate items if nothing else is
   # found)
   zstyle ':completion:*' completer _complete _approximate
-fi
+# fi
 
 # Make completion case-insensitive in case of no matches
 # See man zshcompsys +1747
@@ -233,6 +225,11 @@ zstyle ':completion:*:complete:gvim:option-S-1:*' file-patterns \
     '*.vim:session-files:session\ files' \
     '*(-/):directories:directories'
 
+# prefere ~/.ssh/id_* files for identity files
+zstyle ':completion::complete:ssh-add:argument-rest:' file-patterns \
+  'id_^*.pub:identity-files' \
+  '%p:all-files'
+
 compdef '_files -g "*.{pdf,ps,dvi}"' evince
 
 compdef _gnu_generic k3b
@@ -251,9 +248,9 @@ fignore=(.o .toc .lot .lof .bak .BAK .sav .old .trace)
 ## Set my prefered editor. {{{
 ##
 if [[ -n "$DISPLAY" ]] ;then
-    export VISUAL="gvim -f"
+    export VISUAL="vim"
     # export BROWSER="midori"
-    export EDITOR="gvim -f"
+    export EDITOR="vim"
     export FCEDIT="vim"
 else
     # export BROWSER="links"
@@ -287,6 +284,13 @@ if [[ -f  $DIRCOLORS ]]; then
     eval `dircolors $DIRCOLORS`
 else
     eval `dircolors -b`
+fi
+
+
+if [[ -f "${HOME}/src/fasd/fasd" ]]; then
+  source "${HOME}/src/fasd/fasd" 
+  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-wcomp zsh-ccomp-install zsh-wcomp-install)"
+  bindkey "^F" fasd-complete-f 
 fi
 
 # Use colorized file names for completion.
@@ -325,7 +329,6 @@ typeset -a loaded_environments
 function update_color_settings () {
   local col_normal col_time col_path col_host col_retcode
 
-  # if [[ $HOST == matzbach || $HOST == marlov ]]; then
   if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" && -z "$SSH_CONNECTION" ]]; then
     if [[ ${background} == "dark" ]]; then
       col_normal="%F{grey}%b%k"
