@@ -37,3 +37,6 @@
 [submodule "vim/bundle/jinja2-syntax"]
 	path = vim/bundle/jinja2-syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = https://github.com/wincent/command-t.git
