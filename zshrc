@@ -300,10 +300,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 export GREP_OPTIONS="--color=auto"
 # export GREP_COLOR="7"
 
-if [[ -x /usr/bin/lesspipe ]]; then
-    eval "$(/usr/bin/lesspipe)"
-fi
-
 (( $+commands[pager] )) && PAGER="pager" || PAGER="less"
 # which pager &>/dev/null && PAGER="pager" || PAGER="less"
 export PAGER
