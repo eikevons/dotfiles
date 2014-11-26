@@ -59,7 +59,7 @@ URxvt.visualBell: True
 URxvt.mapAlert:   True
 
 ! Plugin stuff
-URxvt*urlLauncher: iceweasel
+URxvt.url-launcher: bws
 ! See urxvtperl(3)
 URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,readline
 
