@@ -1,0 +1,18 @@
+# Play videos/audio directly from youtube
+youtube-pl ()
+{
+  local audioonly url
+if [[ $1 == a || $1 == A ]]; then
+  audioonly=yes
+  shift
+fi
+
+if [[ -z $audioonly ]]; then
+  url="$(youtube-dl -g -f best $@)"
+  mpv $url
+
+else
+  url="$(youtube-dl -g -f bestaudio $@)"
+  mpv --vo null $url
+fi
+}
