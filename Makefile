@@ -10,6 +10,11 @@ basic-setup: $(addprefix $(HOME)/., profile)
 
 vim-setup:  $(addprefix $(HOME)/., vim vimrc)
 
+# update all g
+git-submods:
+	echo " [git] updating submodules"
+	@git submodule foreach git pull -q
+
 zsh-setup: $(addprefix $(HOME)/., zprofile zshenv zshrc alias) zshfunctions
 
 zshfunctions: $(addprefix $(HOME)/., $(ZSHFUNCTIONS))
