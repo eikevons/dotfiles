@@ -9,10 +9,10 @@ fi
 
 if [[ -z $audioonly ]]; then
   url="$(youtube-dl -g -f best $@)"
-  mpv $url
+  mpv --cache-pause $url
 
 else
   url="$(youtube-dl -g -f bestaudio $@)"
-  mpv --vo null $url
+  mpv --cache-pause --vo null $url
 fi
 }
