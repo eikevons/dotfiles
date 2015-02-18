@@ -49,3 +49,10 @@ fi
 # if [ -d ${HOME}/projects/rivet/helpers/generators/liblinks ]; then
     # export AGILE_GEN_PATH=${HOME}/projects/rivet/helpers/generators/liblinks
 # fi
+
+# Start ssh-agent if necessary.
+SSHAGENT=/usr/bin/ssh-agent
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+    eval `$SSHAGENT -s`
+    trap "kill $SSH_AGENT_PID" 0
+fi
