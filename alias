@@ -63,9 +63,12 @@ if [[ -n $ZSH_VERSION ]]; then
   unset SANSABASE
 
   # documents
-  alias -s ps=okular
-  alias -s pdf=okular
-  alias -s dvi=okular
+  docview () {
+    okular $@ 2>/dev/null
+  }
+  alias -s ps=docview
+  alias -s pdf=docview
+  alias -s dvi=docview
 
   alias -g ,G='|grep'
   alias -g ,N='|nl'

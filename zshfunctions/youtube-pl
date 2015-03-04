@@ -9,10 +9,12 @@ fi
 
 if [[ -z $audioonly ]]; then
   url="$(youtube-dl -g -f best $@)"
+  [[ -z $url ]] && {print "Failed to get URL"; return 1;}
   mpv --cache-pause $url
 
 else
   url="$(youtube-dl -g -f bestaudio $@)"
+  [[ -z $url ]] && {print "Failed to get URL"; return 1;}
   mpv --cache-pause --vo null $url
 fi
 }
