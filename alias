@@ -32,10 +32,12 @@ alias cp='cp -i'
 #alias cdrecord='cdrecord -v -eject'
 
 # alias ipysci='/usr/bin/ipython2.5 -pylab -p scipy'
-alias ipy="LESS=-r `which ipython`"
-alias ipylab='ipy --pylab --profile=scipy'
-alias ipyalps='LESS=-r ipython2.6 --pylab --profile=alps'
-alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
+which ipython 2>&1 >/dev/null && {
+  alias ipy="LESS=-r `which ipython`"
+  alias ipylab='ipy --pylab --profile=scipy'
+  alias ipyalps='LESS=-r ipython2.6 --pylab --profile=alps'
+  alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
+}
 
 alias rndline="shuf -n1"
 
@@ -64,7 +66,7 @@ if [[ -n $ZSH_VERSION ]]; then
 
   # documents
   docview () {
-    okular $@ 2>/dev/null
+    okular $@ 2>$HOME/.xsession-errors &
   }
   alias -s ps=docview
   alias -s pdf=docview
