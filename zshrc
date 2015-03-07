@@ -271,6 +271,7 @@ hash -d -r
 [[ -d ${HOME}/projects/professor ]] && hash -d prof=${HOME}/projects/professor
 [[ -d ${HOME}/projects/alps ]] && hash -d alps=${HOME}/projects/alps
 [[ -d ${HOME}/externfs/desy.afs ]] && hash -d desy=${HOME}/externfs/desy.afs
+[[ -d /dev/shm ]] && hash -d volatile=/dev/shm
 
 ALIASES="$HOME/.alias"
 DIRCOLORS="$HOME/.dircolors.darkbg"
