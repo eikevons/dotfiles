@@ -227,8 +227,8 @@ zstyle ':completion:*:complete:gvim:option-S-1:*' file-patterns \
 
 # prefere ~/.ssh/id_* files for identity files
 zstyle ':completion::complete:ssh-add:argument-rest:' file-patterns \
-  'id_^*.pub:identity-files' \
-  '%p:all-files'
+  '~/.ssh/id_^*.pub:identity-files' \
+  '*:all-files'
 
 compdef '_files -g "*.{pdf,ps,dvi}"' evince
 
