@@ -6,8 +6,9 @@ set softtabstop=4
 set expandtab
 set shiftwidth=4
 
-" use indentation of 2. line of paragraphs
-set formatoptions+=2
+" use indentation of 2. line of paragraphs + continue with comments on newline and o
+set formatoptions+=2co
+
 " don't add double space at end of sentences
 set nojoinspaces
 
