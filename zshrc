@@ -100,6 +100,7 @@ bindkey "^U" backward-kill-line
 bindkey "^K" kill-line
 bindkey "^O" kill-whole-line
 [[ -z "$terminfo[kdch1]" ]] || bindkey "$terminfo[kdch1]" delete-char
+bindkey "^_" undo
 
 [[ -z "$terminfo[khome]" ]] || bindkey -M viins "$terminfo[khome]" beginning-of-line
 bindkey "^A" beginning-of-line
