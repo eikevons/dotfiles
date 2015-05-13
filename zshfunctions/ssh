@@ -6,7 +6,7 @@ function ssh ()
   local -a keys
 
   if [[ -n $@ ]]; then
-    for idfile in $HOME/.ssh/id_*.pub; do
+    for idfile in $HOME/.ssh/id_*.pub(N); do
       host=${${idfile}:t}
       host=$host[4,-5]
       if [[ $host =~ $@ ]]; then
