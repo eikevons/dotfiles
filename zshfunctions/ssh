@@ -3,13 +3,14 @@
 function ssh ()
 {
   local idfile host
-  local -a keys
+  local -a keys additional_options
 
   if [[ -n $@ ]]; then
     for idfile in $HOME/.ssh/id_*.pub(N); do
       host=${${idfile}:t}
       host=$host[4,-5]
       if [[ $host =~ $@ ]]; then
+        # strip the .pub
         idfile=$idfile[1,-5]
         break
       fi
@@ -26,13 +27,14 @@ function ssh ()
       key=$line[4,-1]
       if [[ $key == $host ]]; then
         found=yes
+        additional_options=( -i $idfile )
         break
       fi
     done
     if [[ -z $found ]]; then
-      ssh-add $idfile
+      ssh-add $idfile && additional_options=( -i $idfile )
     fi
   fi
 
-  command ssh $@
+  command ssh $additional_options $@
 }
