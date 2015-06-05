@@ -1,16 +1,14 @@
-TeaTimer() {
-    if [[ $# -le 1 ]]; then
-        print "usage:  $0 time message"
-        print "example: $0 4m tea is ready"
-        print "Bad Number of arguments!"
-        return 1
-    fi
-    local TIME MESSAGE
-    TIME=$1
-    shift
-    MESSAGE="$@"
-    # { sleep $TIME && ( echo "$@" | festival --tts ; notify-send "TeaTimer" "$@" ) }&
+if [[ $# -le 1 ]]; then
+  print "usage:  $0 time message"
+  print "example: $0 4m tea is ready"
+  print "Bad Number of arguments!"
+  return 1
+fi
+local TIME MESSAGE
+TIME=$1
+shift
+MESSAGE="$@"
+# { sleep $TIME && ( echo "$@" | festival --tts ; notify-send "TeaTimer" "$@" ) }&
 
-    ( sleep $TIME && { notify-send "TeaTimer" "$MESSAGE" ; espeak "$MESSAGE" ; } )&
-    print "Timer set!"
-}
+( sleep $TIME && { notify-send "TeaTimer" "$MESSAGE" ; espeak "$MESSAGE" ; } )&
+print "Timer set!"

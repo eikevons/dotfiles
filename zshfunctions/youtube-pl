@@ -1,7 +1,5 @@
 # Play videos/audio directly from youtube
-youtube-pl ()
-{
-  local audioonly url
+local audioonly url
 if [[ $1 == a || $1 == A ]]; then
   audioonly=yes
   shift
@@ -17,4 +15,3 @@ else
   [[ -z $url ]] && {print "Failed to get URL"; return 1;}
   mpv --cache-pause --vo null $url
 fi
-}

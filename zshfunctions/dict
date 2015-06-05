@@ -1,3 +1,1 @@
-dict () {
-  /usr/bin/dict "$@" | /usr/bin/colorit
-}
+command dict "$@" | /usr/bin/colorit

@@ -236,8 +236,11 @@ compdef '_files -g "*.{pdf,ps,dvi}"' evince
 compdef _gnu_generic k3b
 compdef _gpg gpg2
 
-compdef wget npwget
-compdef wget robget
+compdef $_comps[wget] npwget
+compdef $_comps[wget] robget
+if (( $#_comps[tmux] )) && whence tm &>/dev/null; then
+  compdef $_comps[tmux] tm
+fi
 
 # complete all my process names
 zstyle ':completion:*:processes-names' command \

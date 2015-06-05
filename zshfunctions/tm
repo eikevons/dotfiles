@@ -1,7 +1,5 @@
-tm() {
-  if (( $#commands[tmux] )); then
-    [[ $# -eq 0 ]] && { tmux attach || tmux new } || tmux $@
-  else
-    print "tmux not installed" 1>&2
-  fi
-}
+if (( $#commands[tmux] )); then
+  [[ $# -eq 0 ]] && { command tmux attach || command tmux new-session } || command tmux $@
+else
+  print "tmux not installed" 1>&2
+fi

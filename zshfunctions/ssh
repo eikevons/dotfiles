@@ -1,40 +1,37 @@
 # A simple function to automatically ssh-add(1) the required keys.
 # This function expects that the key's are named id_$HOSTNAME.pub
-function ssh ()
-{
-  local idfile host
-  local -a keys additional_options
+local idfile host
+local -a keys additional_options
 
-  if [[ -n $@ ]]; then
-    for idfile in $HOME/.ssh/id_*.pub(N); do
-      host=${${idfile}:t}
-      host=$host[4,-5]
-      if [[ $host =~ $@ ]]; then
-        # strip the .pub
-        idfile=$idfile[1,-5]
-        break
-      fi
-      host=
-    done
-  fi
-
-
-  if [[ -n $host ]]; then
-    local line key found
-    for line in "${(f)$(ssh-add -l)}"; do
-      line=(${(z)line})
-      line=${${line[-2]}:t}
-      key=$line[4,-1]
-      if [[ $key == $host ]]; then
-        found=yes
-        additional_options=( -i $idfile )
-        break
-      fi
-    done
-    if [[ -z $found ]]; then
-      ssh-add $idfile && additional_options=( -i $idfile )
+if [[ -n $@ ]]; then
+  for idfile in $HOME/.ssh/id_*.pub(N); do
+    host=${${idfile}:t}
+    host=$host[4,-5]
+    if [[ $host =~ $@ ]]; then
+      # strip the .pub
+      idfile=$idfile[1,-5]
+      break
     fi
-  fi
+    host=
+  done
+fi
 
-  command ssh $additional_options $@
-}
+
+if [[ -n $host ]]; then
+  local line key found
+  for line in "${(f)$(ssh-add -l)}"; do
+    line=(${(z)line})
+    line=${${line[-2]}:t}
+    key=$line[4,-1]
+    if [[ $key == $host ]]; then
+      found=yes
+      additional_options=( -i $idfile )
+      break
+    fi
+  done
+  if [[ -z $found ]]; then
+    ssh-add $idfile && additional_options=( -i $idfile )
+  fi
+fi
+
+command ssh $additional_options $@
