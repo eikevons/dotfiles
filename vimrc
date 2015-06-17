@@ -431,7 +431,7 @@ vnoremap <silent> # :<C-U>
 
 """""""""""""""""""""""""""""""""
 " yankstack
-if has("gui") " mapping to Meta-... only works in gVim
+if has("gui_running") " mapping to Meta-... only works in gVim
   nmap <M-p> <Plug>yankstack_substitute_older_paste
   nmap <M-n> <Plug>yankstack_substitute_newer_paste
 endif
