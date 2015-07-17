@@ -9,9 +9,6 @@
 
 ## Vim specific rules
 
-# do not track bundles
-vim/bundle/conque-read-only/
-
 vim/tags/
 vim/doc/tags
 vim/view/
