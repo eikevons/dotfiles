@@ -34,8 +34,7 @@ alias cp='cp -i'
 # alias ipysci='/usr/bin/ipython2.5 -pylab -p scipy'
 which ipython 2>&1 >/dev/null && {
   alias ipy="LESS=-r `which ipython`"
-  alias ipylab='ipy --pylab --profile=scipy'
-  alias ipyalps='LESS=-r ipython2.6 --pylab --profile=alps'
+  alias ifdx='ipy --profile=fdx'
   alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
 }
 
@@ -50,6 +49,13 @@ alias kika='vlc http://85.239.122.162/mk3w-3faw-3rqf-enc0-kika'
 alias my='mutt -y'
 
 alias svnstatus='svn status | grep --color=never "^[^?]\|py$"'
+
+# git
+alias gad='git add'
+alias gco='git checkout'
+alias gcm='git commit'
+alias grm='git rm'
+alias gst='git status'
 
 alias dfu='diff -u'
 
