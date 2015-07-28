@@ -34,9 +34,6 @@
 [submodule "vim/bundle/jinja2-syntax"]
 	path = vim/bundle/jinja2-syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = https://github.com/wincent/command-t.git
 [submodule "vim/bundle/SimpylFold"]
 	path = vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
@@ -46,3 +43,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
