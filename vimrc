@@ -209,9 +209,18 @@ let g:xptemplate_vars = "SParg="
 " let g:xptemplate_key = '<Tab>'
 
 """""""""""""""""""""""""""""""""
-" Powerline
-let g:Powerline_symbols = "unicode"
-let g:Powerline_stl_path_style = "short"
+" Airline
+let g:airline_detect_paste=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+  let g:airline_left_sep = '\'
+  let g:airline_right_sep = '/'
+  let g:airline_symbols.linenr = '␤'
+endif
+
+"""""""""""""""""""""""""""""""""
+" ctrlP.vim
+let g:ctrlp_map = '<Leader>t'
 
 """""""""""""""""""""""""""""""""
 " yankstack
@@ -223,7 +232,6 @@ let g:yankstack_map_keys = 0
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list=1
-
 
 """""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
@@ -429,11 +437,18 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-"""""""""""""""""""""""""""""""""
-" yankstack
 if has("gui_running") " mapping to Meta-... only works in gVim
+  """""""""""""""""""""""""""""""""
+  " yankstack
   nmap <M-p> <Plug>yankstack_substitute_older_paste
   nmap <M-n> <Plug>yankstack_substitute_newer_paste
+
+  """""""""""""""""""""""""""""""""
+  " vim-fontsize
+  nmap <silent> <Leader>f= <Plug>FontsizeInc
+  nmap <silent> <Leader>f- <Plug>FontsizeInc
+  nmap <silent> <Leader>f0 <Plug>FontsizeInc
+
 endif
 
 " }}}
