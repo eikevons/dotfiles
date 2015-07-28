@@ -10,9 +10,6 @@
 [submodule "vim/bundle/solarized-colors"]
 	path = vim/bundle/solarized-colors
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/bundle/indent-object"]
 	path = vim/bundle/indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
@@ -46,3 +43,6 @@
 [submodule "vim/bundle/vim-fontsize"]
 	path = vim/bundle/vim-fontsize
 	url = https://github.com/drmikehenry/vim-fontsize.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
