@@ -219,10 +219,6 @@ if !exists('g:airline_symbols')
 endif
 
 """""""""""""""""""""""""""""""""
-" ctrlP.vim
-let g:ctrlp_map = '<Leader>t'
-
-"""""""""""""""""""""""""""""""""
 " yankstack
 " turn default mappings off
 let g:yankstack_map_keys = 0
