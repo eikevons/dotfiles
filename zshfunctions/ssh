@@ -1,35 +1,39 @@
 # A simple function to automatically ssh-add(1) the required keys.
 # This function expects that the key's are named id_$HOSTNAME.pub
-local idfile host
+local idfile host arg found
 local -a keys additional_options
 
 if [[ -n $@ ]]; then
   for idfile in $HOME/.ssh/id_*.pub(N); do
     host=${${idfile}:t}
     host=$host[4,-5]
-    if [[ $host =~ $@ ]]; then
-      # strip the .pub
-      idfile=$idfile[1,-5]
-      break
-    fi
+    for arg in $@; do
+      if [[ $host =~ $arg ]]; then
+        # strip the .pub
+        idfile=$idfile[1,-5]
+        found="yes"
+        break
+      fi
+    done
+    [[ -n $found ]] && break
     host=
   done
 fi
 
 
 if [[ -n $host ]]; then
-  local line key found
+  local line key already_loaded
   for line in "${(f)$(ssh-add -l)}"; do
     line=(${(z)line})
     line=${${line[-2]}:t}
     key=$line[4,-1]
     if [[ $key == $host ]]; then
-      found=yes
+      already_loaded="yes"
       additional_options=( -i $idfile )
       break
     fi
   done
-  if [[ -z $found ]]; then
+  if [[ -z $already_loaded ]]; then
     ssh-add $idfile && additional_options=( -i $idfile )
   fi
 fi
