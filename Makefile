@@ -13,7 +13,7 @@ vim-setup:  $(addprefix $(HOME)/., vim vimrc)
 # update all git submodules
 git-submods:
 	@echo " [git] updating submodules"
-	@git submodule foreach git pull -q
+	@git submodule foreach 'git pull -q || true'
 
 zsh-setup: $(addprefix $(HOME)/., zprofile zshenv zshrc alias) zshfunctions
 
