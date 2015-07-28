@@ -51,11 +51,14 @@ alias my='mutt -y'
 alias svnstatus='svn status | grep --color=never "^[^?]\|py$"'
 
 # git
-alias gad='git add'
-alias gco='git checkout'
-alias gcm='git commit'
-alias grm='git rm'
-alias gst='git status'
+which git 2>&1 >/dev/null && {
+  alias gad='git add'
+  alias gco='git checkout'
+  alias gcm='git commit'
+  alias grm='git rm'
+  alias gst='git status'
+  alias glg='git log'
+}
 
 alias dfu='diff -u'
 
