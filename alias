@@ -19,6 +19,7 @@ alias lh='ls -sh'
 alias l='ls -CF'
 alias l1='ls -1'
 alias lsnew="ls --sort=time --reverse -1"
+unset LS
 
 alias cd..='cd ..'
 
@@ -31,12 +32,19 @@ alias cp='cp -i'
 
 #alias cdrecord='cdrecord -v -eject'
 
-# alias ipysci='/usr/bin/ipython2.5 -pylab -p scipy'
 which ipython 2>&1 >/dev/null && {
-  alias ipy="LESS=-r `which ipython`"
+  IPYTHON_ENV="LESS=-r"
+  alias ipy="$IPYTHON_ENV `which ipython`"
   alias ifdx='ipy --profile=fdx'
   alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
+
+  which ipython3 2>&1 >/dev/null && {
+    alias ipy3="$IPYTHON_ENV `which ipython3`"
+    alias ifdx3='ipy3 --profile=fdx'
+  }
 }
+
+alias grep="grep --color=auto"
 
 alias rndline="shuf -n1"
 
@@ -58,6 +66,7 @@ which git 2>&1 >/dev/null && {
   alias grm='git rm'
   alias gst='git status'
   alias glg='git log'
+  alias gdf='git diff'
 }
 
 alias dfu='diff -u'
