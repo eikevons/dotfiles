@@ -42,6 +42,7 @@ which ipython 2>&1 >/dev/null && {
     alias ipy3="$IPYTHON_ENV `which ipython3`"
     alias ifdx3='ipy3 --profile=fdx'
   }
+  unset IPYTHON_ENV
 }
 
 alias grep="grep --color=auto"
