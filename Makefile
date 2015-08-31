@@ -11,6 +11,8 @@ basic-setup: $(addprefix $(HOME)/., profile)
 vim-setup:  $(addprefix $(HOME)/., vim vimrc)
 
 # update all git submodules
+# Use (http://stackoverflow.com/questions/3796927/how-to-git-clone-including-submodules) after cloning::
+#   git submodule update --init --recursive
 git-submods:
 	@echo " [git] updating submodules"
 	@git submodule foreach 'git pull -q || true'
