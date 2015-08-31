@@ -32,13 +32,13 @@ alias cp='cp -i'
 
 #alias cdrecord='cdrecord -v -eject'
 
-which ipython 2>&1 >/dev/null && {
+which ipython >/dev/null 2>&1 && {
   IPYTHON_ENV="LESS=-r"
   alias ipy="$IPYTHON_ENV `which ipython`"
   alias ifdx='ipy --profile=fdx'
   alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
 
-  which ipython3 2>&1 >/dev/null && {
+  which ipython3 >/dev/null 2>&1 && {
     alias ipy3="$IPYTHON_ENV `which ipython3`"
     alias ifdx3='ipy3 --profile=fdx'
   }
