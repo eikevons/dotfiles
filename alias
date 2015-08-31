@@ -95,6 +95,7 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g ,N='|nl'
   alias -g ,L='|less'
   alias -g ,S='|sort'
+  alias -g ,SH='|sort -h'
   alias -g ,SN='|sort -g'
   alias -g ,SN2='|sort -g -k 2'
   alias -g ,SN3='|sort -g -k 3'
