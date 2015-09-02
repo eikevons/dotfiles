@@ -442,6 +442,7 @@ if has("gui_running") " mapping to Meta-... only works in gVim
   """""""""""""""""""""""""""""""""
   " vim-fontsize
   nmap <silent> <Leader>f= <Plug>FontsizeInc
+  nmap <silent> <Leader>f+ <Plug>FontsizeInc
   nmap <silent> <Leader>f- <Plug>FontsizeDec
   nmap <silent> <Leader>f0 <Plug>FontsizeDefault
 
