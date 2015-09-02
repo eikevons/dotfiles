@@ -180,14 +180,6 @@ let NERDCreateDefaultMappings = 0
 let g:tex_flavor = "latex"
 
 """""""""""""""""""""""""""""""""
-" Settings for Python
-let python_highlight_all = 1
-let python_slow_sync = 1
-" load template, replace filename and go to EOF
-" autocmd BufNewFile *.py if expand("<afile>:p") !~ ".*/professor/.*" | 0r ~/.templates/sceleton_big.py | exe '%s/filename.py/\=expand("<afile>:t")/' | silent $  | endif
-" autocmd BufNewFile */professor/*.py 0r ~/.templates/sceleton_small.py | exe '%s/filename.py/\=expand("<afile>:t")/' | silent $
-
-"""""""""""""""""""""""""""""""""
 " Setup SuperTab
 " let g:SuperTabDefaultCompletionType = "context"
 " Insert `literal' tab with Shift-Tab
@@ -225,7 +217,7 @@ let g:yankstack_map_keys = 0
 
 """""""""""""""""""""""""""""""""
 " Syntastic
-let g:syntastic_python_checkers=['pyflakes']
+" Syntax checkers are configured in ftplugin/*
 let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list=1
 

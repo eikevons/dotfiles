@@ -3,6 +3,9 @@
 setlocal omnifunc=pythoncomplete#Complete
 set completeopt+=preview
 
+let python_highlight_all = 1
+let python_slow_sync = 1
+
 " 
 " set python specific formatting options
 setlocal textwidth=76
@@ -44,3 +47,4 @@ nnoremap <silent> <buffer> K :let oisk=&isk<CR>:set isk+=.<CR>:let mykw = expand
 " nnoremap <silent> <buffer> ]s :ll<CR>
 nnoremap <silent> <buffer> ]s :lnext<CR>
 nnoremap <silent> <buffer> [s :lprev<CR>
+let g:syntastic_python_checkers=['pyflakes']
