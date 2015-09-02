@@ -49,3 +49,6 @@
 [submodule "vim/bundle/cypher-vim-syntax"]
 	path = vim/bundle/cypher-vim-syntax
 	url = https://github.com/neo4j-contrib/cypher-vim-syntax.git
+[submodule "vim/bundle/vim-diff-fold"]
+	path = vim/bundle/vim-diff-fold
+	url = https://github.com/sgeb/vim-diff-fold.git
