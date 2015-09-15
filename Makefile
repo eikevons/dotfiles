@@ -23,7 +23,7 @@ zshfunctions: $(addprefix $(HOME)/., $(ZSHFUNCTIONS))
 
 colors: $(addprefix $(HOME)/., dircolors.darkbg dircolors.lightbg)
 
-X-setup: $(addprefix $(HOME)/., Xresources)
+X-setup: $(addprefix $(HOME)/., Xresources XCompose)
 
 screen-setup: $(addprefix $(HOME)/., screenrc)
 
