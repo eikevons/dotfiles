@@ -320,40 +320,6 @@ zstyle ':vcs_info:*' disable-patterns \
 
 add-zsh-hook precmd vcs_info
 
-# append environment indicators to this variable
-function indicate_environment () {
-  [[ -z $1 ]] && { print "indicate loaded environment in prompt"
-                   print "usage: $0 ENVIRONMENTNAME"
-                   return 1
-                 }
-  export loaded_environments="$1${loaded_environments+:}${loaded_environments}"
-}
-
-function unindicate_environment () {
-  [[ -z $1 ]] && { print "un-indicate loaded environment in prompt"
-                   print "usage: $0 ENVIRONMENTNAME"
-                   return 1
-                 }
-  if [[ $loaded_environments =~ "^$1" ]]; then
-    loaded_environments=$loaded_environments[$(( $#1 + 1 )),$#loaded_environments]
-    if [[ -n $loaded_environments ]]; then
-      loaded_environments=$loaded_environments[2,$#loaded_environments]
-    fi
-  elif [[ $loaded_environments =~ "$1\$" ]]; then
-    loaded_environments=$loaded_environments[1,$(( -$#1 - 1 ))]
-    if [[ -n $loaded_environments ]]; then
-      loaded_environments=$loaded_environments[1,-2]
-    fi
-  elif [[ $loaded_environments =~ $1 ]]; then
-    loaded_environments=${loaded_environments/$1:/}
-  else
-    print "environment name '$1' not indicated"
-    return 2
-  fi
-
-  export loaded_environments
-}
-
 function update_color_settings () {
   local col_normal col_time col_path col_host col_retcode
 
@@ -392,7 +358,11 @@ function update_color_settings () {
     fi
   fi
 
-  PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}\${loaded_environments:+ <}\${loaded_environments/:/-}\${loaded_environments:+>}
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    ps1_context="($(basename $VIRTUAL_ENV))"
+  fi
+
+  PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}\${ps1_context}
 %# "
   # RPROMPT='${vcs_info_msg_0_}'
 }
