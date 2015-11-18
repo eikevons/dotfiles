@@ -28,7 +28,8 @@ Xft.rgba:       rgb
 ! EIKE(2012-06-25): The libxft update changed the font rendering dramatically:
 ! URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true,xft:unifont:size=9
 ! URxvt.font: xft:Terminus:pixelsize=8,xft:unifont:size=9
-URxvt.font: xft:Dina:pixelsize=8,xft:Inconsolata for Powerline:size=9,xft:unifont:size=9
+! URxvt.font: xft:Dina:pixelsize=8,xft:Inconsolata for Powerline:size=9,xft:unifont:size=9
+URxvt.font: xft:Inconsolata:size=12,xft:unifont:size=9
 ! URxvt.foreground: Grey10
 ! URxvt.foreground: #e8e8e2
 URxvt.foreground: #eaeaea
@@ -59,13 +60,20 @@ URxvt.visualBell: True
 URxvt.mapAlert:   True
 
 ! Plugin stuff
-URxvt.url-launcher: bws
+URxvt.url-launcher: xdg-open
+
 ! See urxvtperl(3)
-URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,readline
+URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,readline,font-size
 
 URxvt.matcher.button: 2
 URxvt.matcher.pattern.1: \\B(/\\S+?):(\\d+)(?=:|$)
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+! This requires: https://github.com/majutsushi/urxvt-font-size installen in ~/.urxvt/ext/
+URxvt.keysym.C-0:       perl:font-size:reset
+URxvt.keysym.C-equal:   perl:font-size:increase
+URxvt.keysym.C-plus:    perl:font-size:increase
+URxvt.keysym.C-minus:   perl:font-size:decrease
+
 
 Xcursor.theme: ComixCursors-Opaque-Orange-Large-Slim
 
