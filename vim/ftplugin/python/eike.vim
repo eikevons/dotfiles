@@ -48,3 +48,5 @@ nnoremap <silent> <buffer> K :let oisk=&isk<CR>:set isk+=.<CR>:let mykw = expand
 nnoremap <silent> <buffer> ]s :lnext<CR>
 nnoremap <silent> <buffer> [s :lprev<CR>
 let g:syntastic_python_checkers=['pyflakes']
+
+nnoremap <silent> <buffer> <leader>pv :call pythonversiontoggle#toggle()<CR>:SyntasticReset<CR>
