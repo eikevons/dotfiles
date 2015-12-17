@@ -222,6 +222,11 @@ let g:syntastic_check_on_open=1
 let g:syntastic_always_populate_loc_list=1
 
 """""""""""""""""""""""""""""""""
+" indentLine
+" Disable by default. Use <F10> to toggle &list->indentLine->nothing
+let g:indentLine_enabled = 0
+
+"""""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
 
@@ -352,12 +357,24 @@ nnoremap <F9> :set wrap!<CR>
 inoremap <F9> <Esc>:set wrap!<CR>a
 
 " toggle hlsearch
-nnoremap <S-F9> :set hlsearch!<CR>
-inoremap <S-F9> <Esc>:set hlsearch!<CR>a
+nnoremap <C-F9> :set hlsearch!<CR>
+inoremap <C-F9> <Esc>:set hlsearch!<CR>a
 
-" toggle displaying special characters
-nnoremap <F10> :set list!<CR>
-inoremap <F10> <Esc>:set list!<CR>a
+" toggle displaying special characters and indentation marks
+function ToggleList()
+  if &list
+    set nolist
+    :IndentLinesEnable
+  elseif exists("b:indentLine_enabled") && b:indentLine_enabled
+    set nolist
+    :IndentLinesDisable
+  else
+    set list
+  endif
+endfunction
+
+nnoremap <F10> :call ToggleList()<CR>
+inoremap <F10> <Esc>:call ToggleList()<CR>a
 
 " toggle line numbering
 function ToggleNumber()
