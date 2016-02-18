@@ -6,6 +6,22 @@ include "%L"
 <Multi_key> <g> <L>            : "Λ"   U039B    # GREEK CAPITAL LETTER LAMD
 <Multi_key> <a> <l> : "ل" U0643
 
+# English quotes
+# opening
+<Multi_key> <less> <quotedbl>           : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <quotedbl> <less>           : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+# closing
+<Multi_key> <greater> <quotedbl>        : "”"   U201d # RIGHT DOUBLE QUOTATION MARK
+<Multi_key> <quotedbl> <greater>        : "”"   U201d # RIGHT DOUBLE QUOTATION MARK
+# German quotes
+# opening
+<Multi_key> <comma> <quotedbl>          : "„"   U201e # DOUBLE LOW-9 QUOTATION MARK
+<Multi_key> <quotedbl> <comma>          : "„"   U201e # DOUBLE LOW-9 QUOTATION MARK
+# closing
+<Multi_key> <apostrophe> <quotedbl>     : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <quotedbl> <apostrophe>     : "“"   U201c # LEFT DOUBLE QUOTATION MARK
+
+
 # See also http://bleah.co.uk/~simon/stuff/XCompose
 # and http://dotfiles.org/~inky/.XCompose
 # and http://paste.lisp.org/display/73094
