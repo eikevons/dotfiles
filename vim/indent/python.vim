@@ -44,7 +44,7 @@ function GetGooglePythonIndent(lnum)
         \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
         \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
         \ . " =~ '\\(Comment\\|String\\)$'")
-  echo par_line par_col
+  " echo par_line par_col
   if par_line > 0
     call cursor(par_line, 1)
     if par_col != col("$") - 1
