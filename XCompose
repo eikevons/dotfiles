@@ -4,7 +4,9 @@ include "%L"
 # EIKE: Copied from <https://raw.githubusercontent.com/rrthomas/pointless-xcompose/master/xcompose>
 <Multi_key> <g> <l>            : "λ"   U03BB    # GREEK SMALL LETTER LAMDA
 <Multi_key> <g> <L>            : "Λ"   U039B    # GREEK CAPITAL LETTER LAMD
-<Multi_key> <a> <l> : "ل" U0643
+<Multi_key> <g> <d>            : "δ"   U03B4    # GREEK SMALL LETTER DELTA
+<Multi_key> <g> <D>            : "Δ"   U0394    # GREEK CAPITAL LETTER DELTA
+# <Multi_key> <a> <l> : "ل" U0643
 
 # English quotes
 # opening
