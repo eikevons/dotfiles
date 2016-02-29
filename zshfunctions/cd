@@ -1,0 +1,6 @@
+# See "Extended cd#0" at http://zshwiki.org/home/examples/functions
+if [[ $# == 1 && -f $1 ]]; then
+  builtin cd $1:h
+else
+  builtin cd $*
+fi
