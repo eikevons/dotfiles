@@ -68,6 +68,8 @@ which git 2>&1 >/dev/null && {
   alias gst='git status'
   alias glg='git log'
   alias gdf='git diff'
+  # Merge Feature Brance
+  alias gmfb='git merge --no-ff'
 }
 
 alias dfu='diff -u'
