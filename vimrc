@@ -296,6 +296,28 @@ noremap gL :bp<CR>
 " Add newlines below current line. Useful for Python scripting.
 noremap <S-CR> o<Esc>k
 
+" Fix number of consecutive emtpy lines.
+function FixEmptyLines(n_lines)
+  if getline('.') !~ "^ *$"
+    return
+  endif
+
+  " Jump to the first empty line in the block
+  call search('\(^ *$\)\@!', 'b')
+  normal j
+
+  execute 's/\(\s*\n\)\+/' . repeat('\r', a:n_lines) . '/e'
+
+  " Work around end-of-file bug
+  if line('.') == line('$')
+    normal "_dd
+  endif
+endfunction
+
+" Collapse multiple consecutive blank lines into 2.
+map <leader>d :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
+map <leader>D :call FixEmptyLines(0)<CR>
+
 " A keyboard-friendly replacement for Escape
 ino jj <Esc>
 cno jj <Esc>
