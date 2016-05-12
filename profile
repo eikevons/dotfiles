@@ -41,6 +41,14 @@ if [ -d $HOMEUSR ]; then
     fi
 fi
 
+GOPATH=$HOMEUSR/go
+if [ -d $GOPATH ]; then
+    export GOPATH
+    if [ -d $GOPATH/bin ]; then
+        export PATH="$PATH${PATH:+:}$GOPATH/bin"
+    fi
+fi
+
 # For bibsync <https://github.com/minad/bibsync>
 if [ -d $HOME/.gem/ ]; then
     export GEM_HOME=$HOME/.gem/
