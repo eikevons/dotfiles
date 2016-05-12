@@ -23,8 +23,6 @@ unset LS
 
 alias cd..='cd ..'
 
-alias ...='cd ../..'
-
 # secure file movement
 alias rm='rm -i'    
 alias mv='mv -i'
@@ -103,7 +101,14 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g ,SN3='|sort -g -k 3'
   alias -g ,SN4='|sort -g -k 4'
   alias -g ,SN5='|sort -g -k 5'
+
+  alias -g ...='../..'
+  alias -g ....='../../..'
+else
+  alias ...='cd ../..'
+  alias ....='cd ../../..'
 fi
+
 
 if [[ -e "$HOME/.alias.private" ]]; then
   source "$HOME/.alias.private"
