@@ -17,7 +17,7 @@ git-submods:
 	@echo " [git] updating submodules"
 	@git submodule foreach 'git pull -q || true'
 
-zsh-setup: $(addprefix $(HOME)/., zprofile zshenv zshrc alias) zshfunctions
+zsh-setup: $(addprefix $(HOME)/., zprofile zshenv zshrc alias zsh_extensions) zshfunctions
 
 zshfunctions: $(addprefix $(HOME)/., $(ZSHFUNCTIONS))
 

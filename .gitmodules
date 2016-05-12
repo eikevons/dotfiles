@@ -58,3 +58,6 @@
 [submodule "vim/bundle/indentLine"]
 	path = vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "zsh_extensions/git-flow-completion"]
+	path = zsh_extensions/git-flow-completion
+	url = https://github.com/petervanderdoes/git-flow-completion.git

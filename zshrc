@@ -248,6 +248,9 @@ zstyle ':completion:*:processes-names' command \
 
 fignore=(.o .toc .lot .lof .bak .BAK .sav .old .trace)
 
+[[ -f $HOME/.zsh_extensions/git-flow-completion/git-flow-completion.zsh ]] \
+  && source $HOME/.zsh_extensions/git-flow-completion/git-flow-completion.zsh
+
 ## }}}
 ## Set my prefered editor. {{{
 ##
