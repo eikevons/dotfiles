@@ -304,6 +304,9 @@ fi
 # Use colorized file names for completion.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Dynamic directories
+whence git && add-zsh-hook zsh_directory_name dynamic_directory_git
+
 (( $+commands[pager] )) && PAGER="pager" || PAGER="less"
 # which pager &>/dev/null && PAGER="pager" || PAGER="less"
 export PAGER
