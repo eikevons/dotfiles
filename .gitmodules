@@ -61,3 +61,6 @@
 [submodule "zsh_extensions/git-flow-completion"]
 	path = zsh_extensions/git-flow-completion
 	url = https://github.com/petervanderdoes/git-flow-completion.git
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
