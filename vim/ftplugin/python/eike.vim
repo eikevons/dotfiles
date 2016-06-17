@@ -1,5 +1,4 @@
-" 
-" Turn on completion:
+" " Turn on completion:
 setlocal omnifunc=pythoncomplete#Complete
 set completeopt+=preview
 
@@ -48,3 +47,11 @@ nnoremap <silent> <buffer> K :let oisk=&isk<CR>:set isk+=.<CR>:let mykw = expand
 nnoremap <silent> <buffer> ]s :lnext<CR>
 nnoremap <silent> <buffer> [s :lprev<CR>
 let g:syntastic_python_checkers=['pyflakes']
+
+" Use Python3 by default
+" syntastic
+let g:syntastic_python_pyflakes_exe = '/usr/bin/pyflakes3'
+" jedi-vim
+" 2016-06-17: This is not working because vim on debian is built with
+" python2-support only (see https://bugs.debian.org/729924)
+" let g:jedi#force_py_version = 3
