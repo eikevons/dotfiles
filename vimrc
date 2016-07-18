@@ -321,8 +321,10 @@ function FixEmptyLines(n_lines)
 endfunction
 
 " Collapse multiple consecutive blank lines into 2.
-map <leader>d :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
-map <leader>D :call FixEmptyLines(0)<CR>
+map <leader><space> :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
+map <leader><S-space> :call FixEmptyLines(0)<CR>
+" map <leader>d :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
+" map <leader>D :call FixEmptyLines(0)<CR>
 
 " A keyboard-friendly replacement for Escape
 ino jj <Esc>
