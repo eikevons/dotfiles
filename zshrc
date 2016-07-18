@@ -99,6 +99,7 @@ bindkey -v
 bindkey "^U" backward-kill-line
 bindkey "^K" kill-line
 bindkey "^O" kill-whole-line
+bindkey "^T" transpose-words
 [[ -z "$terminfo[kdch1]" ]] || bindkey "$terminfo[kdch1]" delete-char
 bindkey "^_" undo
 
