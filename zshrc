@@ -396,6 +396,19 @@ case $TERM in
     add-zsh-hook chpwd update_term_title
     update_term_title
     ;;
+  screen)
+    set_dir_title () {
+      print -Pn "\ek%n-%~\e\\"
+    }
+    set_command_title () {
+      if [[ -n "$1" ]]; then
+        print -Pn "\ek${1[1,20]}\e\\"
+      fi
+
+    }
+    add-zsh-hook precmd set_dir_title
+    add-zsh-hook preexec set_command_title
+    ;;
 esac
 ## }}}
 
