@@ -1,0 +1,23 @@
+if (( $#commands[jq] )) && (( $#commands[less] ));then
+  local file jq_cmd
+  jq_cmd="."
+  case $# in
+    1)
+      file=$1
+      ;;
+    0)
+      print "$0 expects 1 or 2 arguments" 1>&2
+      return 2
+      ;;
+    2)
+      jq_cmd="$1"
+      file="$2"
+      ;;
+  esac
+
+  jq -C "$jq_cmd" "$file" | less -R
+
+else
+  print "jq or less not installed" 1>&2
+  return 1
+fi
