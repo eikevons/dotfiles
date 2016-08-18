@@ -6,6 +6,7 @@ include "%L"
 <Multi_key> <g> <L>            : "Λ"   U039B    # GREEK CAPITAL LETTER LAMD
 <Multi_key> <g> <d>            : "δ"   U03B4    # GREEK SMALL LETTER DELTA
 <Multi_key> <g> <D>            : "Δ"   U0394    # GREEK CAPITAL LETTER DELTA
+<Multi_key> <g> <b>            : "β"   U03B2    # GREEK SMALL LETTER BETA
 # <Multi_key> <a> <l> : "ل" U0643
 
 # English quotes
