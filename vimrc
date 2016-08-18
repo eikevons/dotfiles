@@ -112,8 +112,8 @@ let g:sh_fold_enabled= 1
 " set background=light
 
 if has("gui_running")
-  set background=light
-  colo SolarizedLight_eike
+  set background=dark
+  colo molokaieike
 else
   if $background == "light"
     set background=light
