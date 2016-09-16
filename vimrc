@@ -53,7 +53,7 @@ set spelllang=de,en
 set path+="./**3"
 
 " exclude some files from file/directory completion
-set wildignore+=*.o,*.pyc,*~
+set wildignore+=*.o,*.pyc,*~,node_modules
 
 " 
 set completeopt=menu,preview,longest
