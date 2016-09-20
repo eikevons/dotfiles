@@ -211,9 +211,10 @@ if !exists('g:airline_symbols')
 endif
 
 """""""""""""""""""""""""""""""""
-" yankstack
+" yankstack 1/3
 " turn default mappings off
 let g:yankstack_map_keys = 0
+
 
 """""""""""""""""""""""""""""""""
 " Syntastic
@@ -235,6 +236,13 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 """""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
+
+"""""""""""""""""""""""""""""""""
+" yankstack 2/3
+" Make sure yankstack is setup before surround plugin to allow surround
+" overwrite yankstack key bindings.
+" See https://github.com/maxbrunsfeld/vim-yankstack/issues/9 .
+call yankstack#setup()
 
 " }}}
 """""""""""""""""""""""""""""""""
@@ -474,7 +482,7 @@ vnoremap <silent> # :<C-U>
 
 if has("gui_running") " mapping to Meta-... only works in gVim
   """""""""""""""""""""""""""""""""
-  " yankstack
+  " yankstack 3/3
   nmap <M-p> <Plug>yankstack_substitute_older_paste
   nmap <M-n> <Plug>yankstack_substitute_newer_paste
 
