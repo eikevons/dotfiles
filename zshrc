@@ -326,15 +326,39 @@ export PAGER
 setopt prompt_subst
 export background="dark"
 
-# Enable RCS status in prompt.
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git hg svn
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' disable-patterns \
-  "$HOME/externfs/smb(|/*)" \
-  "$HOME/externfs/sshfs(|/*)"
+if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" && -z "$SSH_CONNECTION" ]]; then
+  autoload -Uz vcs_info
+  zstyle ':vcs_info:*' enable git hg svn
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' disable-patterns \
+    "$HOME/externfs/smb(|/*)" \
+    "$HOME/externfs/sshfs(|/*)"
 
-add-zsh-hook precmd vcs_info
+  add-zsh-hook precmd vcs_info
+
+  whence git &> /dev/null && {
+    # Taken from /usr/share/doc/zsh/examples/Misc/vcs_info-examples.gz
+    ## git: Show +N/-N when your local branch is ahead-of or behind remote HEAD.
+    # Make sure you have added misc to your 'formats':  %m
+    zstyle ':vcs_info:git*+set-message:*' hooks git-st
+    function +vi-git-st() {
+      local ahead behind
+      local -a gitstatus
+
+      # for git prior to 1.7
+      # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
+      ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+      (( $ahead )) && gitstatus+=( "+${ahead}" )
+
+      # for git prior to 1.7
+      # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
+      behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+      (( $behind )) && gitstatus+=( "-${behind}" )
+
+      (( $#gitstatus )) && hook_com[misc]+="${(j:/:)gitstatus}"
+    }
+  }
+fi
 
 function update_color_settings () {
   local col_normal col_time col_path col_host col_retcode
@@ -353,11 +377,12 @@ function update_color_settings () {
       col_path="%B%F{white}%K{green}"
       col_retcode="%B%F{white}%K{red}"
     fi
-    zstyle ':vcs_info:*' unstagedstr "%B%F{red}"
-    zstyle ':vcs_info:*' stagedstr "%B%F{magenta}"
-    # zstyle ':vcs_info:svn:*' formats "%u%F{yellow}%b"
-    zstyle ':vcs_info:*' formats "%%b%k%f[%F{yellow}%c%u%b%%b%k%f]"
-    zstyle ':vcs_info:*' actionformats "%%b%k%f[%F{yellow}%u%b%%b%%k%f|%F{yellow}%a%%b%f%k]"
+    zstyle ':vcs_info:svn:*' formats "%u%F{yellow}%b"
+    zstyle ':vcs_info:git:*' unstagedstr "%B%F{red}+"
+    zstyle ':vcs_info:git:*' stagedstr "%B%F{magenta}+"
+    zstyle ':vcs_info:git:*' formats "%%b%k%f[%F{yellow}%c%u%b%%b%k%f%m]"
+    zstyle ':vcs_info:git:*' actionformats "%%b%k%f[%F{yellow}%c%u%b%%b%%k%f|%F{yellow}%a%%b%f%k]"
+
   else
     if [[ ${background} == "dark" ]]; then
       col_normal="%{[00;37m%}"
