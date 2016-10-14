@@ -68,7 +68,7 @@ which git 2>&1 >/dev/null && {
   alias gdf='git diff'
   # Merge Feature Brance
   alias gmfb='git merge --no-ff'
-  git flow version 2>&1 >/dev/null && {
+  git flow version >/dev/null 2>&1 && {
     alias gf='git flow'
   }
 }
