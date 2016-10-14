@@ -20,7 +20,7 @@ typeset -U fpath
 if [[ -d "${HOME}/.zshfunctions" ]]; then
     fpath=("${HOME}/.zshfunctions" $fpath)
 
-    autoload ${fpath[1]}/[a-zA-Z]*[^~](:t)
+    autoload -- ${fpath[1]}/[-a-zA-Z]*[^~](:t)
 fi
 
 # if [[ -f "${HOME}/src/z/z.sh" ]]; then

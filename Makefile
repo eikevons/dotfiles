@@ -38,4 +38,4 @@ $(HOME)/.%: %
 	    mkdir -p $(@D); \
 	fi
 	@echo " [ln]    link $< to ~/.$<"
-	@ln -sT $(DOTFILES)/$< $@
+	@ln -sT -- $(DOTFILES)/$< $@
