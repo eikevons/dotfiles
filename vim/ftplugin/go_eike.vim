@@ -1,2 +1,2 @@
-set nocindent
-set smartindent
+" Disable shiftwidth for go files
+set shiftwidth=0
