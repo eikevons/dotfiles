@@ -331,8 +331,6 @@ endfunction
 " Collapse multiple consecutive blank lines into 2.
 map <leader><space> :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
 map <leader><S-space> :call FixEmptyLines(0)<CR>
-" map <leader>d :<C-U>call FixEmptyLines(v:count > 0 ? v:count : 2)<CR>
-" map <leader>D :call FixEmptyLines(0)<CR>
 
 " A keyboard-friendly replacement for Escape
 ino jj <Esc>
@@ -349,6 +347,11 @@ map <leader>c<space> <plug>NERDCommenterToggle
 map <C-k>   <C-W>k
 map <C-h>   <C-W>h
 map <C-l>   <C-W>l
+
+noremap <Left>  <C-W>h
+noremap <Down>  <C-W>j
+noremap <Up>    <C-W>k
+noremap <Right> <C-W>l
 
 " re-create syntax coloring
 nmap <leader>sy :syntax sync fromstart<cr>
@@ -458,14 +461,15 @@ inoremap <localleader>h= <Esc>yypv$r=o
 nnoremap <localleader>h~ yypv$r~o<Esc>
 inoremap <localleader>h~ <Esc>yypv$r~o
 
-" wrap visual-selected text in parentheses
-vnoremap <leader>)  <ESC>`>a)<ESC>`<i(<ESC>
-vnoremap <leader>}  <ESC>`>a}<ESC>`<i{<ESC>
-vnoremap <leader>{  <ESC>`<i{<ESC>`>la}<ESC>
-vnoremap <leader>"  <ESC>`>a"<ESC>`<i"<ESC>
-vnoremap <leader>'  <ESC>`>a'<ESC>`<i'<ESC>
-vnoremap <leader>`  <ESC>`>a`<ESC>`<i`<ESC>
-vnoremap <leader>]  <ESC>`>a]<ESC>`<i[<ESC>
+" NOTE (2016-11-22): This should be obsoleted by surround.vim .
+" " wrap visual-selected text in parentheses
+" vnoremap <leader>)  <ESC>`>a)<ESC>`<i(<ESC>
+" vnoremap <leader>}  <ESC>`>a}<ESC>`<i{<ESC>
+" vnoremap <leader>{  <ESC>`<i{<ESC>`>la}<ESC>
+" vnoremap <leader>"  <ESC>`>a"<ESC>`<i"<ESC>
+" vnoremap <leader>'  <ESC>`>a'<ESC>`<i'<ESC>
+" vnoremap <leader>`  <ESC>`>a`<ESC>`<i`<ESC>
+" vnoremap <leader>]  <ESC>`>a]<ESC>`<i[<ESC>
 
 " See: http://vim.wikia.com/wiki/Search_for_visually_selected_text
 " Search for selected text, forwards or backwards.
