@@ -73,6 +73,7 @@ set laststatus=2
 set statusline=%n\ %<%f\ %([%Y%H%M%R%W%{&paste?',PASTE':''}]%)\ %=%-10.(%l/%L,%v%)\ %P
 
 set wildmenu    " Display menu when completing command line.
+set wildmode=list:longest
 
 set lazyredraw
 " Minimal number of screen lines to keep above and below the cursor
@@ -84,7 +85,7 @@ if has("gui_running")
   " set guifont=DejaVu\ Sans\ Mono\ 9
   " set guifont=Inconsolata\ for\ Powerline\ 9
   " set guifont=Terminus\ 8
-  set guifont=Fantasque\ Sans\ Mono\ 10
+  set guifont=Fantasque\ Sans\ Mono\ 12
   set guioptions-=T
   set guioptions+=c
   set cursorline
@@ -226,6 +227,12 @@ let g:syntastic_always_populate_loc_list=1
 " indentLine
 " Disable by default. Use <F10> to toggle &list->indentLine->nothing
 let g:indentLine_enabled = 0
+
+"""""""""""""""""""""""""""""""""
+" vim-go
+" Disable go-fmt on save
+let g:go_fmt_autosave = 0
+
 
 """""""""""""""""""""""""""""""""
 " Add autocommands to fix Simpylfold loading
