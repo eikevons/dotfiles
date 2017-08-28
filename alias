@@ -63,7 +63,7 @@ which git 2>&1 >/dev/null && {
   alias gco='git checkout'
   alias gcm='git commit'
   alias grm='git rm'
-  alias gst='git status'
+  alias gst='git status --short'
   alias glg='git log'
   alias gdf='git diff'
   # Merge Feature Brance
