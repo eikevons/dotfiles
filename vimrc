@@ -233,13 +233,6 @@ let g:indentLine_enabled = 0
 " Disable go-fmt on save
 let g:go_fmt_autosave = 0
 
-
-"""""""""""""""""""""""""""""""""
-" Add autocommands to fix Simpylfold loading
-" See https://github.com/tmhedberg/SimpylFold/issues/27
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-
 """""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
