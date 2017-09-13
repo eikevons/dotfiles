@@ -5,9 +5,13 @@ set nocompatible
 set softtabstop=4
 set expandtab
 set shiftwidth=4
+set smarttab
 
 " use indentation of 2. line of paragraphs + continue with comments on newline and o
 set formatoptions+=2co
+
+set autoindent
+set backspace=indent,eol,start
 
 " don't add double space at end of sentences
 set nojoinspaces
@@ -31,6 +35,8 @@ set incsearch
 " characters.
 set smartcase
 set hlsearch
+" default to replace all occurences
+set gdefault
 
 filetype plugin on
 " Uncomment the following to have Vim load indentation rules according to the
@@ -57,6 +63,7 @@ set wildignore+=*.o,*.pyc,*~,node_modules
 
 " 
 set completeopt=menu,preview,longest
+set complete-=i
 
 " }}}
 """""""""""""""""""""""""""""""""
@@ -68,9 +75,11 @@ set showmatch   " Show matching brackets
 set previewheight=4
 
 " Setup statusline
-set noruler
+set ruler
 set laststatus=2
 set statusline=%n\ %<%f\ %([%Y%H%M%R%W%{&paste?',PASTE':''}]%)\ %=%-10.(%l/%L,%v%)\ %P
+
+set display+=lastline
 
 set wildmenu    " Display menu when completing command line.
 set wildmode=list:longest
@@ -91,7 +100,7 @@ if has("gui_running")
   set cursorline
 endif
 
-set listchars=eol:¶,tab:→\ ,trail:•
+set listchars=eol:$,tab:>\ ,trail:+,nbsp:~
 
 set fillchars=vert:│
 
@@ -305,7 +314,7 @@ imap <F1> <Esc>
 map <F1> :bp<CR>
 noremap gH :bp<CR>
 map <F2> :bn<CR>
-noremap gL :bp<CR>
+noremap gL :bn<CR>
 
 " Add newlines below current line. Useful for Python scripting.
 noremap <S-CR> o<Esc>k
@@ -335,12 +344,6 @@ map <leader><S-space> :call FixEmptyLines(0)<CR>
 " A keyboard-friendly replacement for Escape
 ino jj <Esc>
 cno jj <Esc>
-
-" Don't use default NERD commenter key bindings
-map <leader>cc <plug>NERDCommenterComment
-map <leader>cu <plug>NERDCommenterUncomment
-map <leader>cy <plug>NERDCommenterYank
-map <leader>c<space> <plug>NERDCommenterToggle
 
 " easier movement between buffers
 " map <C-j>   <C-W>j
