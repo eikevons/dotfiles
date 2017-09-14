@@ -61,14 +61,16 @@ set path+="./**3"
 " exclude some files from file/directory completion
 set wildignore+=*.o,*.pyc,*~,node_modules
 
-" 
+" Completion
 set completeopt=menu,preview,longest
 set complete-=i
+
+" Disable modelines
+set nomodeline
 
 " }}}
 """""""""""""""""""""""""""""""""
 " appearance {{{
-set modeline
 set showmatch   " Show matching brackets
 
 " Make the preview window 4 lines high
