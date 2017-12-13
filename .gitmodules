@@ -79,3 +79,6 @@
 [submodule "vim/bundle/vue"]
 	path = vim/bundle/vue
 	url = https://github.com/posva/vim-vue.git
+[submodule "vim/bundle/logstash.vim"]
+	path = vim/bundle/logstash.vim
+	url = https://github.com/robbles/logstash.vim.git
