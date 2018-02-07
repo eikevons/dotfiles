@@ -9,6 +9,14 @@ include "%L"
 <Multi_key> <g> <b>            : "β"   U03B2    # GREEK SMALL LETTER BETA
 # <Multi_key> <a> <l> : "ل" U0643
 
+# EIKE: short-cuts for roman numerals (see below)
+<Multi_key> <I> <space>			: "Ⅰ"	U2160		# ROMAN NUMERAL ONE
+<Multi_key> <I> <I>			: "Ⅱ"	U2161		# ROMAN NUMERAL TWO
+<Multi_key> <I> <2>			: "Ⅱ"	U2161		# ROMAN NUMERAL TWO
+<Multi_key> <I> <3>			: "Ⅲ"	U2162		# ROMAN NUMERAL THREE
+<Multi_key> <I> <4>			: "Ⅳ"	U2163		# ROMAN NUMERAL FOUR
+<Multi_key> <I> <5>			: "Ⅴ"	U2164		# ROMAN NUMERAL FIVE
+
 # English quotes
 # opening
 <Multi_key> <less> <quotedbl>           : "“"   U201c # LEFT DOUBLE QUOTATION MARK
