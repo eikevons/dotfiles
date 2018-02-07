@@ -1,21 +1,19 @@
 if (( $#commands[jq] )) && (( $#commands[less] ));then
-  local file jq_cmd
-  jq_cmd="."
+  local jq_args
   case $# in
-    1)
-      file=$1
+    0)
+      print "Usage: $0 [[JQ-OPTIONS] COMMAND] FILE" 1>&2
+      return 2
       ;;
-    2)
-      jq_cmd="$1"
-      file="$2"
+    1)
+      jq_args=(. "$1")
       ;;
     *)
-      print "Usage: $0 [COMMAND] FILE" 1>&2
-      return 2
+      jq_args=($@)
       ;;
   esac
 
-  jq -C "$jq_cmd" "$file" | less -R
+  jq -C $jq_args | less -R
 
 else
   print "jq or less not installed" 1>&2
