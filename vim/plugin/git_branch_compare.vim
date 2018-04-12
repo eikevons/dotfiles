@@ -2,6 +2,12 @@
 " ----------------------------------------------------------------------------
 " DiffRev
 " ----------------------------------------------------------------------------
+"
+if exists('g:loaded_git_diff_rev') || &cp
+  finish
+endif
+let g:loaded_git_diff_rev = 1
+
 let s:git_status_dictionary = {
             \ "A": "Added",
             \ "B": "Broken",
@@ -20,6 +26,10 @@ function! s:get_diff_files(rev)
               \ )
   call setqflist(list)
   copen
+
+  if exists('g:loaded_fugitive') 
+    exe 'nnoremap <buffer> <silent> D <CR>:Gdiff ' . a:rev . '<CR>'
+  endif
 endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
