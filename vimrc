@@ -255,6 +255,8 @@ call pathogen#infect()
 " See https://github.com/maxbrunsfeld/vim-yankstack/issues/9 .
 call yankstack#setup()
 
+let g:markdown_folding = 1
+
 " }}}
 """""""""""""""""""""""""""""""""
 " Light session management. {{{
