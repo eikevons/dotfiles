@@ -151,15 +151,6 @@ if [[ $TERM != linux ]]; then
   }
 fi
 
-# Add shortcut for dynamic directories
-# https://vincent.bernat.im/en/blog/2015-zsh-directory-bookmarks.html#easy-typing
-vbe-insert-dynamic-directory() {
-  emulate -L zsh
-  LBUFFER=${LBUFFER}"~["
-}
-zle -N vbe-insert-dynamic-directory
-bindkey '@@' vbe-insert-dynamic-directory
-
 # See Email on zsh-users@zsh.org
 #  "Automatically run ls on blank line for faster navigation"
 #  (29 Mar 2012 15:55:05 -0500)
@@ -313,9 +304,6 @@ fi
 
 # Use colorized file names for completion.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# Dynamic directories
-whence git &> /dev/null && add-zsh-hook zsh_directory_name dynamic_directory_git
 
 (( $+commands[pager] )) && PAGER="pager" || PAGER="less"
 # which pager &>/dev/null && PAGER="pager" || PAGER="less"
