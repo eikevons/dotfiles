@@ -1,13 +1,3 @@
-!XTerm*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-1
-! XTerm*Font: -misc-fixed-medium-r-normal--14-*-*-*-*-*-iso8859-1
-! XTerm*Font2: -misc-fixed-medium-r-normal--8-*-*-*-*-*-iso8859-1
-! XTerm*Font3: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-1
-! XTerm*Font4: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso8859-1
-! XTerm*Font5: -misc-fixed-medium-r-normal--18-*-*-*-*-*-iso8859-1
-! XTerm*Font6: -misc-fixed-medium-r-normal--20-*-*-*-*-*-iso8859-1
-!*font:-misc-fixed-medium-r-normal--14-*-*-*-*-*-iso8859-1
-!*font: xft:Monospace:size=11
-
 XTerm*scrollBar: False
 XTerm*scrollTtyOutput: False
 XTerm*scrollKey: True
@@ -15,7 +5,7 @@ XTerm*loginShell: True
 XTerm*cursorColor: Green
 
 ! See: https://wiki.archlinux.org/index.php/Font_Configuration#Applications_without_fontconfig_support
- Xft.antialias:  true
+Xft.antialias:  true
 ! Sub-pixel rendering and hinting is not compatible
 ! Xft.hinting:    true
 ! Xft.hintstyle:  hintfull
@@ -29,7 +19,8 @@ Xft.rgba:       rgb
 ! URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true,xft:unifont:size=9
 ! URxvt.font: xft:Terminus:pixelsize=8,xft:unifont:size=9
 ! URxvt.font: xft:Dina:pixelsize=8,xft:Inconsolata for Powerline:size=9,xft:unifont:size=9
-URxvt.font: xft:Inconsolata:size=12,xft:unifont:size=11
+! URxvt.font: xft:Inconsolata:size=12,xft:unifont:size=11
+URxvt.font: xft:Iosevka Medium:size=12,xft:unifont:size=11
 ! URxvt.foreground: Grey10
 ! URxvt.foreground: #e8e8e2
 URxvt.foreground: #eaeaea
