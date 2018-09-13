@@ -302,6 +302,17 @@ if [[ -f "${HOME}/src/fasd/fasd" ]]; then
   bindkey "^F" fasd-complete-f 
 fi
 
+if [[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+  export FZF_DEFAULT_OPTS="--reverse"
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+fi
+# if (( $+commands[fzf] )); then
+#   local _fzf_shell_dir=${commands[fzf]:A:h:h}/shell
+#   [[ -e $_fzf_shell_dir/key-bindings.zsh ]] && source $_fzf_shell_dir/key-bindings.zsh
+#   [[ -e $_fzf_shell_dir/completion.zsh ]] && source $_fzf_shell_dir/completion.zsh
+#   unset _fzf_shell_dir
+# fi
+
 # Use colorized file names for completion.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
