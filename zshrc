@@ -124,6 +124,12 @@ bindkey -M vicmd "K" run-help
 autoload run-help-svn
 autoload run-help-git
 
+# edit command line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^E" edit-command-line
+bindkey -M viins "^E" edit-command-line
+
 # reverse order during incremental search 
 bindkey -M isearch '^P' history-incremental-search-forward
 
