@@ -22,7 +22,7 @@ let s:git_status_dictionary = {
 function! s:get_diff_files(rev)
   let list = map(split(system(
               \ 'git diff --name-status '.a:rev), '\n'),
-              \ '{"filename":matchstr(v:val, "\\S\\+$"),"text":s:git_status_dictionary[matchstr(v:val, "^\\w")]}'
+              \ '{"filename":matchstr(v:val, "\\S.*$", 2),"text":s:git_status_dictionary[matchstr(v:val, "^\\w")]}'
               \ )
   call setqflist(list)
   copen
