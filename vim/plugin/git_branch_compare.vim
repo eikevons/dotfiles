@@ -32,4 +32,16 @@ function! s:get_diff_files(rev)
   endif
 endfunction
 
-command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
+function! s:get_branches(ArgLead, CmdLine, CursorPos)
+  return join(
+        \ map(
+        \   filter(
+        \     split(system('git branch'), '\n'),
+        \     'v:val[0] != "*"'
+        \     ),
+        \   'matchstr(v:val, "\\S.*$")'
+        \   ),
+        \ "\n")
+endfunction
+
+command! -complete=custom,s:get_branches -nargs=1 DiffRev call s:get_diff_files(<q-args>)
