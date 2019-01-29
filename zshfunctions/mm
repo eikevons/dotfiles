@@ -1,0 +1,29 @@
+local cur=$PWD
+local last=$cur
+local curdev
+local lastdev
+
+zmodload zsh/stat
+
+while [[ ! -e $cur/Makefile ]]; do
+  next=$cur/..
+  next=${next:A}
+
+  [[ -e $cur/.git/ ]] && {
+    print "Traversing git boundary at $cur -> $next" 1>&2
+    return 1
+  }
+
+  curdev=$(zstat +dev $cur)
+  nextdev=$(zstat +dev $next)
+  [[ $curdev != $nextdev ]] && {
+    print "Traversing filesystem boundary at $cur -> $next" 1>&2
+    return 1
+  }
+  cur=$next
+done
+
+pushd -q $cur
+print "+[in $PWD]"
+make $@
+popd -q
