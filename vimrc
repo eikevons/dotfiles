@@ -246,6 +246,14 @@ let g:indentLine_enabled = 0
 let g:go_fmt_autosave = 0
 
 """""""""""""""""""""""""""""""""
+" ack
+" Use rg as search if possible
+if executable("rg")
+  "let g:ack_default_options = " -s -H --nopager --nocolor --nogroup --column"
+  let g:ackprg = "rg --no-messages --with-filename --color=never --column --no-heading"
+endif
+
+"""""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
 
@@ -356,6 +364,10 @@ map <C-k>   <C-W>k
 map <C-h>   <C-W>h
 map <C-l>   <C-W>l
 
+" Quick-jump to buffers
+set wildcharm=<C-Z>
+nnoremap <C-B> :b <C-Z>
+
 noremap <Left>  <C-W>h
 noremap <Down>  <C-W>j
 noremap <Up>    <C-W>k
@@ -452,6 +464,8 @@ au FileType {tex,text,mail} nnoremap <M-d> :exec("!dict <cword>")<CR>
 " map moving between tabs the same as in firefox
 nnoremap gh :tabprevious<CR>
 nnoremap gl :tabnext<CR>
+
+" 
 
 " when displaying wrapped lines, make j/k do change visual lines
 " and gj/gk physical lines
