@@ -24,6 +24,6 @@ while [[ ! -e $cur/Makefile ]]; do
 done
 
 pushd -q $cur
-print "+[in $PWD]"
+print "+[mm in $PWD]"
 make $@
 popd -q
