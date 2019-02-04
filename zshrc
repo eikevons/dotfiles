@@ -198,14 +198,7 @@ zstyle ':completion:*' group-name ''
 # See Zsh Guide chapter 6.2.3
 zstyle ':completion:*' menu select=6
 
-# if whence fasd &>/dev/null ; then
-  # # See fasd +194 (complete fasd output)
-  # zstyle ':completion:*' completer _complete _fasd_zsh_word_complete _approximate
-# else
-  # See man zshcompsys +2490 (complete approximate items if nothing else is
-  # found)
-  zstyle ':completion:*' completer _complete _approximate
-# fi
+zstyle ':completion:*' completer _complete _approximate
 
 # Make completion case-insensitive in case of no matches
 # See man zshcompsys +1747
@@ -302,11 +295,13 @@ else
 fi
 
 
-if [[ -f "${HOME}/src/fasd/fasd" ]]; then
-  source "${HOME}/src/fasd/fasd" 
-  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-wcomp zsh-ccomp-install zsh-wcomp-install)"
-  bindkey "^F" fasd-complete-f 
-fi
+# if [[ -f "${HOME}/src/fasd/fasd" ]]; then
+#   source "${HOME}/src/fasd/fasd" 
+#   eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-wcomp zsh-ccomp-install zsh-wcomp-install)"
+#   bindkey "^F" fasd-complete-f 
+# fi
+
+[[ -f "${HOME}/.zsh_extensions/pwd-history.zsh" ]] && source "${HOME}/.zsh_extensions/pwd-history.zsh" 
 
 if [[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   export FZF_DEFAULT_OPTS="--reverse"
@@ -420,24 +415,24 @@ update_color_settings
 
 case $TERM in
   xterm*|rxvt*)
-    update_term_title () {
+    _update_term_title () {
       print -Pn "\e]0;%n-%~\a"
     }
-    add-zsh-hook chpwd update_term_title
-    update_term_title
+    add-zsh-hook chpwd _update_term_title
+    _update_term_title
     ;;
   screen)
-    set_dir_title () {
+    _set_dir_title () {
       print -Pn "\ek%n-%~\e\\"
     }
-    set_command_title () {
+    _set_command_title () {
       if [[ -n "$1" ]]; then
         print -Pn "\ek${1[1,20]}\e\\"
       fi
 
     }
-    add-zsh-hook precmd set_dir_title
-    add-zsh-hook preexec set_command_title
+    add-zsh-hook precmd _set_dir_title
+    add-zsh-hook preexec _set_command_title
     ;;
 esac
 ## }}}
