@@ -58,12 +58,13 @@ alias my='mutt -y'
 # git
 which git 2>&1 >/dev/null && {
   alias gad='git add'
-  alias gco='git checkout'
+  alias gba='git branch -a'
   alias gcm='git commit'
+  alias gco='git checkout'
+  alias gdf='git diff'
+  alias glg='git log'
   alias grm='git rm'
   alias gst='git status --short'
-  alias glg='git log'
-  alias gdf='git diff'
   # Merge Feature Brance
   alias gmfb='git merge --no-ff'
   git flow version >/dev/null 2>&1 && {
