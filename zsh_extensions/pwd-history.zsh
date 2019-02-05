@@ -16,8 +16,7 @@ which fzf &>/dev/null && {
       # existing entry
       entries=( "$PWD" ${entries[1,$((index-1))]} ${entries[$((index+1)),-1]} )
     fi
-    # (( ${#entries} > 1000 )) && entries=( ${entries[1,1000]} )
-    (( ${#entries} > 4 )) && entries=( ${entries[1,4]} )
+    (( ${#entries} > 1000 )) && entries=( ${entries[1,1000]} )
 
     print -l "${entries[@]}" > "$history_path"
   }
