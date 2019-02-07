@@ -24,7 +24,7 @@ which fzf &>/dev/null && {
   add-zsh-hook chpwd _add-pwd-history
 
   z () {
-    local dir="$(fzf --select-1 --exit-0 --no-sort < "$HOME/.cache/zsh-pwd-history")"
+    local dir="$(fzf --select-1 --exit-0 --no-sort --query "$1" < "$HOME/.cache/zsh-pwd-history")"
     builtin cd "$dir"
   }
    #TODO register as cd completer
