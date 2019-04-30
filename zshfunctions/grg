@@ -3,8 +3,8 @@ if (( $# == 0 )); then
   return 1
 else
   if [[ $0 == "grg" ]]; then
-    gvim -q <(rg --vimgrep $@) -c 'cwindow'
+    gvim -q <(rg --sort path --vimgrep $@) -c 'cwindow'
   else
-    vim -q <(rg --vimgrep $@) -c 'cwindow'
+    vim -q <(rg --sort path --vimgrep $@) -c 'cwindow'
   fi
 fi
