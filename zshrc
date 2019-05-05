@@ -361,7 +361,11 @@ if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" && -z "$SSH_CONNECTION" ]]; then
 fi
 
 function update_color_settings () {
-  local col_normal col_time col_path col_host col_retcode
+  local col_normal col_time col_path col_host col_retcode ps1_context
+
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    ps1_context="($(basename $VIRTUAL_ENV))"
+  fi
 
   if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" && -z "$SSH_CONNECTION" ]]; then
     if [[ ${background} == "dark" ]]; then
@@ -383,6 +387,9 @@ function update_color_settings () {
     zstyle ':vcs_info:git:*' formats "%%b%k%f[%F{yellow}%c%u%b%%b%k%f%m]"
     zstyle ':vcs_info:git:*' actionformats "%%b%k%f[%F{yellow}%c%u%b%%b%%k%f|%F{yellow}%a%%b%f%k]"
 
+    PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_path}%~\${vcs_info_msg_0_}${col_normal}\${ps1_context}
+%# "
+
   else
     if [[ ${background} == "dark" ]]; then
       col_normal="%{[00;37m%}"
@@ -397,14 +404,11 @@ function update_color_settings () {
       col_path="%{[01;37;42m%}"
       col_retcode="%{[00;32;41m%}"
     fi
-  fi
 
-  if [[ -n "$VIRTUAL_ENV" ]]; then
-    ps1_context="($(basename $VIRTUAL_ENV))"
-  fi
-
-  PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}\${ps1_context}
+    PROMPT="%(?//${col_retcode}%?)${col_normal}[%!]${col_time}%T ${col_host}%n@%m${col_normal}:${col_path}%~\${vcs_info_msg_0_}${col_normal}\${ps1_context}
 %# "
+  fi
+
   # RPROMPT='${vcs_info_msg_0_}'
 }
 update_color_settings
