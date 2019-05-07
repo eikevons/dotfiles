@@ -1,2 +1,2 @@
-tr -dc '0-9a-zA-Z#_!-' < /dev/urandom| head -c ${1:-16}
+tr -dc '0-9a-zA-Z#_!-' < /dev/urandom | head -c ${1:-16}
 print
