@@ -5,7 +5,7 @@ if [[ $# == 1 ]]; then
     return
   fi
 
-  if [[ ! -e $1 ]]; then
+  if [[ ! -e $1 && $1 != -* ]]; then
     local _create_dir
     read "_create_dir?Create '$1' [y|N]? "
     if [[ $_create_dir == "y" ]]; then
