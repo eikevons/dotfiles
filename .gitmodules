@@ -82,3 +82,6 @@
 [submodule "vim/bundle/logstash.vim"]
 	path = vim/bundle/logstash.vim
 	url = https://github.com/robbles/logstash.vim.git
+[submodule "urxvt/urxvt-font-size"]
+	path = urxvt/urxvt-font-size
+	url = https://github.com/majutsushi/urxvt-font-size.git
