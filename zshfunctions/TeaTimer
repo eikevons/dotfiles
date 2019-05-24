@@ -4,11 +4,19 @@ if [[ $# -le 1 ]]; then
   print "Bad Number of arguments!"
   return 1
 fi
-local TIME MESSAGE
+local TIME MESSAGE SAYPROG
 TIME=$1
 shift
 MESSAGE="$@"
 # { sleep $TIME && ( echo "$@" | festival --tts ; notify-send "TeaTimer" "$@" ) }&
 
-( sleep $TIME && { notify-send "TeaTimer" "$MESSAGE" ; espeak "$MESSAGE" ; } )&
+if (( $#commands[spd-say] )); then
+  SAYPROG=$commands[spd-say]
+elif (( $#commands[espeak] )); then
+  SAYPROG=$commands[espeak]
+else
+  SAYPROG=:
+fi
+
+( sleep $TIME && { notify-send "TeaTimer" "$MESSAGE" ; $SAYPROG "$MESSAGE" ; } )&
 print "Timer set!"
