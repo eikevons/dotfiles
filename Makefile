@@ -23,7 +23,9 @@ zshfunctions: $(addprefix $(HOME)/., $(ZSHFUNCTIONS))
 
 colors: $(addprefix $(HOME)/., dircolors.darkbg dircolors.lightbg)
 
-X-setup: $(addprefix $(HOME)/., Xresources XCompose Xprofile)
+X-setup: $(addprefix $(HOME)/., Xresources XCompose Xprofile) urxvt-setup
+
+urxvt-setup: $(HOME)/.urxvt/ext/font-size
 
 screen-setup: $(addprefix $(HOME)/., screenrc)
 
