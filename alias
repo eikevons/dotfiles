@@ -71,7 +71,7 @@ which git 2>&1 >/dev/null && {
     alias gf='git flow'
   }
   # Move to top level
-  alias gg='cd $(git rev-parse --show-toplevel)'
+  alias gg='cd $(git rev-parse --show-toplevel | pwd)'
 }
 
 # docker-compose
