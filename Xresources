@@ -20,7 +20,7 @@ Xft.rgba:       rgb
 ! URxvt.font: xft:Terminus:pixelsize=8,xft:unifont:size=9
 ! URxvt.font: xft:Dina:pixelsize=8,xft:Inconsolata for Powerline:size=9,xft:unifont:size=9
 ! URxvt.font: xft:Inconsolata:size=12,xft:unifont:size=11
-URxvt.font: xft:Iosevka Medium:size=12,xft:unifont:size=11
+URxvt.font: xft:Iosevka Light:size=12,xft:unifont:size=11
 ! URxvt.foreground: Grey10
 ! URxvt.foreground: #e8e8e2
 URxvt.foreground: #eaeaea
