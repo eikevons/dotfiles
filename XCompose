@@ -2,11 +2,13 @@
 include "%L"
 
 # EIKE: Copied from <https://raw.githubusercontent.com/rrthomas/pointless-xcompose/master/xcompose>
+<Multi_key> <g> <a>            : "α"   U03B1    # GREEK SMALL LETTER ALPHA
 <Multi_key> <g> <l>            : "λ"   U03BB    # GREEK SMALL LETTER LAMDA
-<Multi_key> <g> <L>            : "Λ"   U039B    # GREEK CAPITAL LETTER LAMD
+<Multi_key> <g> <L>            : "Λ"   U039B    # GREEK CAPITAL LETTER LAMDA
 <Multi_key> <g> <d>            : "δ"   U03B4    # GREEK SMALL LETTER DELTA
 <Multi_key> <g> <D>            : "Δ"   U0394    # GREEK CAPITAL LETTER DELTA
 <Multi_key> <g> <b>            : "β"   U03B2    # GREEK SMALL LETTER BETA
+<Multi_key> <g> <p>            : "π"   U03C0    # GREEK SMALL LETTER PI
 # <Multi_key> <a> <l> : "ل" U0643
 
 # EIKE: short-cuts for roman numerals (see below)
@@ -969,11 +971,11 @@ include "%L"
 # FIXME: prefix conflict
 # <Multi_key> <O> <minus> <plus>		: "♀"	U2640		# FEMALE SIGN
 # <Multi_key> <O> <minus> <greater>	: "♂"	U2642		# MALE SIGN
-<Multi_key> <g> <a> <y>                 :   "⚣"     U26A3   # DOUBLED MALE SIGN
-<Multi_key> <l> <e> <s> <b> <i> <a> <n> :   "⚢"     U26A2   # DOUBLED FEMALE SIGN
-<Multi_key> <h> <e> <t> <e> <r> <o>     :   "⚤"     U26A4   # INTERLOCKED FEMALE AND MALE SIGN
-<Multi_key> <t> <r> <a> <n> <s>         :   "⚥"     U26A5   # MALE AND FEMALE SIGN
-<Multi_key> <g> <e> <n> <d> <e> <r> <q> :   "⚧"     U26A7   # MALE WITH STROKE AND MALE AND FEMALE SIGN
+# <Multi_key> <g> <a> <y>                 :   "⚣"     U26A3   # DOUBLED MALE SIGN
+# <Multi_key> <l> <e> <s> <b> <i> <a> <n> :   "⚢"     U26A2   # DOUBLED FEMALE SIGN
+# <Multi_key> <h> <e> <t> <e> <r> <o>     :   "⚤"     U26A4   # INTERLOCKED FEMALE AND MALE SIGN
+# <Multi_key> <t> <r> <a> <n> <s>         :   "⚥"     U26A5   # MALE AND FEMALE SIGN
+# <Multi_key> <g> <e> <n> <d> <e> <r> <q> :   "⚧"     U26A7   # MALE WITH STROKE AND MALE AND FEMALE SIGN
 
 
 <Multi_key> <O> <X>: 			"☠" U2620 # SKULL AND CROSSBONES (INTENTIONAL CONFLICT)
