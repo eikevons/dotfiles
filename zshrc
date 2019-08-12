@@ -86,6 +86,16 @@ typeset -U path
 # default WORDCHARS="*?_-.[]~=/&;!#$%^(){}<>"
 export WORDCHARS="*?_[]~=&;!#$%^(){}<>"
 
+# See https://archive.zhimingwang.org/blog/2015-09-21-zsh-51-and-bracketed-paste.html#code
+# turn off ZLE bracketed paste in dumb term otherwise turn on ZLE
+# bracketed-paste-magic
+if [[ $TERM == dumb ]]; then
+    unset zle_bracketed_paste
+else
+    autoload -Uz bracketed-paste-magic
+    zle -N bracketed-paste bracketed-paste-magic
+fi
+
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
