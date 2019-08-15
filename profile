@@ -67,3 +67,6 @@ fi
 
 # Moved to /etc/profile.d/java_home-local.sh
 # [ -e /usr/lib/jvm/default-java/ ] && export JAVA_HOME=`readlink -f /usr/lib/jvm/default-java/`
+
+# Move tex-data to a hidden directory
+export TEXMFHOME="$HOME/.local/texmf"
