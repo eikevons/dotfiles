@@ -1,0 +1,11 @@
+if (( $#commands[pandoc] )); then
+  local tmp
+  tmp=$(tempfile -p pd-v -s .html)
+  pandoc -o "$tmp" "$@"
+  # submit delete job (&! to prevent job reporting)
+  { sleep 10; command rm "$tmp" } &!
+  xdg-open "$tmp"
+else
+  print "pandoc not installed" 1>&2
+  return 1
+fi
