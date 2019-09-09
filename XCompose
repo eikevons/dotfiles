@@ -34,6 +34,9 @@ include "%L"
 <Multi_key> <apostrophe> <quotedbl>     : "“"   U201c # LEFT DOUBLE QUOTATION MARK
 <Multi_key> <quotedbl> <apostrophe>     : "“"   U201c # LEFT DOUBLE QUOTATION MARK
 
+# Triangles
+<Multi_key> <less> <bar>                : "◁"   U25C1 # WHITE LEFT-POINTING TRIANGLE
+<Multi_key> <bar> <greater>             : "▷"   U25B7 # WHITE RIGHT-POINTING TRIANGLE
 
 # See also http://bleah.co.uk/~simon/stuff/XCompose
 # and http://dotfiles.org/~inky/.XCompose
@@ -68,8 +71,9 @@ include "%L"
 <Multi_key> <greater> <c>		: "↻"	U21BB		# CLOCKWISE OPEN CIRCLE ARROW
 <Multi_key> <less> <asciitilde>		: "⇜"	U21DC		# LEFTWARDS SQUIGGLE ARROW
 <Multi_key> <greater> <asciitilde>	: "⇝"	U21DD		# RIGHTWARDS SQUIGGLE ARROW
-<Multi_key> <less> <bar>                : "⇤"	U21E4		# LEFTWARDS ARROW TO BAR
-<Multi_key> <greater> <bar>             : "⇥"	U21E5		# RIGHTWARDS ARROW TO BAR
+# <Multi_key> <less> <bar>                : "⇤"	U21E4		# LEFTWARDS ARROW TO BAR
+# <Multi_key> <greater> <bar>             : "⇥"	U21E5		# RIGHTWARDS ARROW TO BAR
+
 <Multi_key> <brokenbar> <less>          : "⇠"	U21E0		# LEFTWARDS DASHED ARROW
 <Multi_key> <brokenbar> <asciicircum>   : "⇡"	U21E1		# UPWARDS DASHED ARROW (INTENTIONAL CONFLICT)
 <Multi_key> <brokenbar> <greater>       : "⇢"	U21E2		# RIGHTWARDS DASHED ARROW
