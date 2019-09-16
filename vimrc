@@ -266,6 +266,14 @@ call yankstack#setup()
 
 let g:markdown_folding = 1
 
+"""""""""""""""""""""""""""""""""
+" UTL
+
+if executable("xdg-open")
+  let g:utl_cfg_hdl_scm_http_system = "!xdg-open '%u'"
+endif
+
+
 " }}}
 """""""""""""""""""""""""""""""""
 " Light session management. {{{
