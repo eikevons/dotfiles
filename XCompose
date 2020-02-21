@@ -9,6 +9,8 @@ include "%L"
 <Multi_key> <g> <D>            : "Δ"   U0394    # GREEK CAPITAL LETTER DELTA
 <Multi_key> <g> <b>            : "β"   U03B2    # GREEK SMALL LETTER BETA
 <Multi_key> <g> <p>            : "π"   U03C0    # GREEK SMALL LETTER PI
+<Multi_key> <g> <s>            : "σ"   U03C2    # GREEK SMALL LETTER SIGMA
+<Multi_key> <g> <S>            : "Σ"   U03A3    # GREEK CAPITAL LETTER SIGMA
 # <Multi_key> <a> <l> : "ل" U0643
 
 # EIKE: short-cuts for roman numerals (see below)
@@ -18,6 +20,9 @@ include "%L"
 <Multi_key> <I> <3>			: "Ⅲ"	U2162		# ROMAN NUMERAL THREE
 <Multi_key> <I> <4>			: "Ⅳ"	U2163		# ROMAN NUMERAL FOUR
 <Multi_key> <I> <5>			: "Ⅴ"	U2164		# ROMAN NUMERAL FIVE
+
+# EIKE: paragraph sign
+<Multi_key> <p> <a> <r> <a>:      "§" U00A7	# SECTION SIGN
 
 # English quotes
 # opening
