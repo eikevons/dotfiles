@@ -274,6 +274,10 @@ if executable("xdg-open")
 endif
 
 
+"""""""""""""""""""""""""""""""""
+" R syntax
+let r_syntax_folding = 1
+
 " }}}
 """""""""""""""""""""""""""""""""
 " Light session management. {{{
