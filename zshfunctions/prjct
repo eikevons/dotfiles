@@ -1,0 +1,25 @@
+local base_dir="$HOME/projects"
+local project
+
+if (( $# == 0 )); then
+  project=$(builtin cd "$base_dir" >/dev/null; print -l *(/) | fzf --layout=reverse --tac --preview='ls {}')
+else
+  project=$(builtin cd "$base_dir" >/dev/null; print -l *(/) | fzf --layout=reverse --tac --preview='ls {}' --query "$@")
+fi
+
+# No project selected
+if [[ -z $project ]]; then
+  local title
+  read title"?Project title: $(date -Id) "
+  if [[ -z "$title" ]]; then
+    return 0
+  fi
+
+  project="$(date -Id) $title"
+
+  if [[ ! -e "$base_dir/$project" ]]; then
+    mkdir "$base_dir/$project" 
+  fi
+fi
+
+cd "$base_dir/$project"
