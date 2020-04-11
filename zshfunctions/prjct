@@ -10,9 +10,15 @@ fi
 # No project selected
 if [[ -z $project ]]; then
   local title
-  read title"?Project title: $(date -Id) "
+  if (( $# == 0 )); then
+    title=""
+  else
+    title="$@"
+  fi
+  vared -p "Project title: " title
   if [[ -z "$title" ]]; then
-    return 0
+    echo "No title!" 1>&2
+    return 1
   fi
 
   project="$(date -Id) $title"
