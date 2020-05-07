@@ -313,16 +313,15 @@ fi
 
 [[ -f "${HOME}/.zsh_extensions/pwd-history.zsh" ]] && source "${HOME}/.zsh_extensions/pwd-history.zsh" 
 
+# Enable key-bindings: ^R, ^T, Meta-c
 if [[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   export FZF_DEFAULT_OPTS="--reverse"
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 fi
-# if (( $+commands[fzf] )); then
-#   local _fzf_shell_dir=${commands[fzf]:A:h:h}/shell
-#   [[ -e $_fzf_shell_dir/key-bindings.zsh ]] && source $_fzf_shell_dir/key-bindings.zsh
-#   [[ -e $_fzf_shell_dir/completion.zsh ]] && source $_fzf_shell_dir/completion.zsh
-#   unset _fzf_shell_dir
-# fi
+# Fuzzy-completion triggered by **<Tab>
+if [[ -e /usr/share/doc/fzf/examples/completion.zsh ]]; then
+  source /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 # Use colorized file names for completion.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
