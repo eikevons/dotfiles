@@ -94,3 +94,6 @@
 [submodule "vim/bundle/utl.vim"]
 	path = vim/bundle/utl.vim
 	url = https://github.com/vim-scripts/utl.vim.git
+[submodule "zsh_extensions/zsh-completions"]
+	path = zsh_extensions/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
