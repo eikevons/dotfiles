@@ -72,7 +72,8 @@ _pandoc()
     '--mimetex=+[Render TeX math using the mimeTeX CGI script.]:URL:'\
     '--webtex=+[Render TeX formulas using an external script that converts TeX formulas to images.]:URL:'\
     '--dump-args[Print information about command-line arguments to stdout,then exit.]'\
-    '--ignore-args[Ignore command-line arguments.]'
+    '--ignore-args[Ignore command-line arguments.]' \
+    ':Output file:_files'
 }
 
 _pandoc "$@"
