@@ -216,7 +216,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # http://zshwiki.org/home/examples/compsys/general
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path ~/.cache/zsh-completion
 
 zstyle ':completion:*' special-dirs true
 
