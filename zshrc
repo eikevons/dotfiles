@@ -252,6 +252,14 @@ if (( $#_comps[tmux] )) && whence tm &>/dev/null; then
   compdef $_comps[tmux] tm
 fi
 
+# Enable aws-cli completion if installed
+# See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html#cli-command-completion-completer
+# Load bash completions (for aws cli completion)
+if (( $#commands[aws_completer] )); then
+  autoload bashcompinit && bashcompinit
+  complete -C "${commands[aws_completer]}" aws
+fi
+
 # complete all my process names
 zstyle ':completion:*:processes-names' command \
     'ps c -u ${USER} -o command | uniq'
