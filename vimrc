@@ -254,6 +254,11 @@ if executable("rg")
 endif
 
 """""""""""""""""""""""""""""""""
+" editorconfig
+" Follow recommendations from README
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+"""""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
 
