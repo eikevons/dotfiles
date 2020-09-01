@@ -97,3 +97,6 @@
 [submodule "zsh_extensions/zsh-completions"]
 	path = zsh_extensions/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "vim/bundle/editorconfig-vim"]
+	path = vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
