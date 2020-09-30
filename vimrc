@@ -7,6 +7,9 @@ set expandtab
 set shiftwidth=4
 set smarttab
 
+" No bell on <esc>
+set belloff+=esc
+
 " use indentation of 2. line of paragraphs + continue with comments on newline and o
 set formatoptions+=2co
 
