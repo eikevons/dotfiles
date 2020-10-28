@@ -30,16 +30,11 @@ alias cp='cp -i'
 
 #alias cdrecord='cdrecord -v -eject'
 
-which ipython >/dev/null 2>&1 && {
-  IPYTHON_ENV="LESS=-r"
-  alias ipy="$IPYTHON_ENV `which ipython`"
-  alias ifdx='ipy --profile=fdx'
-  alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
 
-  which ipython3 >/dev/null 2>&1 && {
-    alias ipy3="$IPYTHON_ENV `which ipython3`"
-    alias ifdx3='ipy3 --profile=fdx'
-  }
+command -v ipython3 >/dev/null 2>&1 && {
+  IPYTHON_ENV="LESS=-r"
+  alias ipy="$IPYTHON_ENV ipython3"
+  alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
   unset IPYTHON_ENV
 }
 
@@ -56,7 +51,7 @@ alias kika='vlc http://85.239.122.162/mk3w-3faw-3rqf-enc0-kika'
 alias my='mutt -y'
 
 # git
-which git 2>&1 >/dev/null && {
+command -v git 2>&1 >/dev/null && {
   alias gad='git add'
   alias gba='git branch -a'
   alias gcm='git commit'
