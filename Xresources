@@ -22,17 +22,7 @@ Xft.rgba:       rgb
 ! URxvt.font: xft:Inconsolata:size=12,xft:unifont:size=11
 ! URxvt.font: xft:Iosevka Light:size=12,xft:unifont:size=11
 URxvt.font: xft:Iosevka Term Light:size=12,xft:Noto Mono:size=12,xft:unifont:size=11
-! URxvt.foreground: Grey10
-! URxvt.foreground: #e8e8e2
-URxvt.foreground: #eaeaea
-! URxvt.background: Black
 URxvt.depth: 32
-! URxvt.background: rgba:bff0/bff0/bff0/bbbb
-! URxvt.background: rgba:afff/af4f/78ef/99ff
-! URxvt.background: rgba:bfff/bf4f/b8ef/99ff
-! URxvt.background: #FFF9B7
-URxvt.background: #1B1D1E
-! URxvt.background: Black
 ! URxvt.cursorColor: Yellow
 URxvt.cursorColor: Green
 URxvt.fullCursor: true
@@ -69,7 +59,6 @@ URxvt.keysym.C-minus:   perl:font-size:decrease
 
 Xcursor.theme: ComixCursors-Opaque-Orange-Large-Slim
 
-
 !taken from <http://colas.nahaboo.net/mouse-wheel-scroll/#xterm>
 !# Scrolling on wheel mouse: half a page normally, line per line with shift
 XTerm.vt100.translations: #override\n\
@@ -80,3 +69,28 @@ Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
 <Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
 <Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)
 
+/*
+ * Based on Molokai theme (https://gist.github.com/vreon/845878)
+ * and my adjustments in vim `vim/colors/molokaieike.vim+207`.
+ */
+*background: #121212
+*foreground: #d0d0d0
+*cursorColor: #d0d0d0
+*color0: #101010
+! Based on vim-Operator *color1: #960050
+*color1: #d7005f
+*color2: #66aa11
+*color3: #c47f2c
+!use Comment color (was originally #30309b).
+*color4: #5f87ff
+*color5: #7e40a5
+*color6: #3579a8
+*color7: #9999aa
+*color8: #303030
+*color9: #ff0090
+*color10: #80ff00
+*color11: #ffba68
+*color12: #5f5fee
+*color13: #bb88dd
+*color14: #4eb4fa
+*color15: #d0d0d0
