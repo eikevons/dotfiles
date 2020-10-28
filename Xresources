@@ -57,7 +57,8 @@ URxvt.keysym.C-plus:    perl:font-size:increase
 URxvt.keysym.C-minus:   perl:font-size:decrease
 
 
-Xcursor.theme: ComixCursors-Opaque-Orange-Large-Slim
+Xcursor.theme: ComixCursors-Opaque-Slim-Orange
+Xcursor.size: 48
 
 !taken from <http://colas.nahaboo.net/mouse-wheel-scroll/#xterm>
 !# Scrolling on wheel mouse: half a page normally, line per line with shift
