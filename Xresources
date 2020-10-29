@@ -70,28 +70,70 @@ Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
 <Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
 <Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)
 
-/*
- * Based on Molokai theme (https://gist.github.com/vreon/845878)
- * and my adjustments in vim `vim/colors/molokaieike.vim+207`.
- */
-*background: #121212
-*foreground: #d0d0d0
-*cursorColor: #d0d0d0
-*color0: #101010
-! Based on vim-Operator *color1: #960050
-*color1: #d7005f
-*color2: #66aa11
-*color3: #c47f2c
-!use Comment color (was originally #30309b).
-*color4: #5f87ff
-*color5: #7e40a5
-*color6: #3579a8
-*color7: #9999aa
-*color8: #303030
-*color9: #ff0090
-*color10: #80ff00
-*color11: #ffba68
-*color12: #5f5fee
-*color13: #bb88dd
-*color14: #4eb4fa
-*color15: #d0d0d0
+
+! Source https://raw.githubusercontent.com/dmedvinsky/badwolf.xdefaults/master/xdefaults.colors
+! X11 colors pieced together by Dmitry Medvinsky.
+! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
+
+! Colors definition {{{
+#define   plain            #f8f6f2
+#define   snow             #ffffff
+#define   coal             #000000
+
+#define   brightgravel     #d9cec3
+#define   lightgravel      #998f84
+#define   gravel           #857f78
+#define   mediumgravel     #666462
+#define   deepgravel       #45413b
+#define   deepergravel     #35322d
+#define   darkgravel       #242321
+#define   blackgravel      #1c1b1a
+#define   blackestgravel   #141413
+
+#define   dalespale        #fade3e
+#define   dirtyblonde      #f4cf86
+#define   taffy            #ff2c4b
+#define   saltwatertaffy   #8cffba
+#define   tardis           #0a9dff
+#define   orange           #ffa724
+#define   lime             #aeee00
+#define   dress            #ff9eb8
+#define   toffee           #b88853
+#define   coffee           #c7915b
+#define   darkroast        #88633f
+! }}}
+
+
+! Resourses {{{
+*background:  blackgravel
+*foreground:  plain
+*cursorColor: lime
+*scrollColor: deepgravel
+*fadeColor:   snow
+*fading:      20
+
+!        black
+*color0:      blackestgravel
+*color8:      coal
+!        red
+*color1:      taffy
+*color9:      taffy
+!        green
+*color2:      lime
+*color10:     lime
+!        yellow
+*color3:      dalespale
+*color11:     orange
+!        blue
+*color4:      tardis
+*color12:     tardis
+!        magenta
+*color5:      dress
+*color13:     dress
+!        cyan
+*color6:      saltwatertaffy
+*color14:     saltwatertaffy
+!        white
+*color7:      brightgravel
+*color15:     snow
+! }}}
