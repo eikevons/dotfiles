@@ -411,9 +411,9 @@ function update_color_settings () {
     if [[ ${background} == "dark" ]]; then
       col_normal="%{[00;37m%}"
       col_time="%{[01;31m%}"
-      col_host="%{[01;45;33m%}"
+      col_host="%{[01;43;31m%}"
       col_path="%{[01;32m%}"
-      col_retcode="%{[00;37;41m%}"
+      col_retcode="%{[01;37;41m%}"
     else
       col_normal="%{[00;30m%}"
       col_time="%{[31m%}"
