@@ -1,4 +1,4 @@
-" " Turn on completion:
+" Turn on completion:
 setlocal omnifunc=pythoncomplete#Complete
 set completeopt+=preview
 
@@ -55,3 +55,8 @@ let g:syntastic_python_pyflakes_exe = '/usr/bin/pyflakes3'
 " 2016-06-17: This is not working because vim on debian is built with
 " python2-support only (see https://bugs.debian.org/729924)
 " let g:jedi#force_py_version = 3
+
+" Enable black formatting
+if executable("black")
+  nmap <leader>b m`:%!black -q -<CR>``
+endif
