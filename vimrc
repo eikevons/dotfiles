@@ -102,6 +102,7 @@ if has("gui_running")
   " set guifont=Fantasque\ Sans\ Mono\ 12
   set guifont=Iosevka\ Light\ 12
   set guioptions-=T
+  set guioptions-=m
   set guioptions+=c
   set cursorline
 endif
