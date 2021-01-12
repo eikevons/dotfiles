@@ -24,7 +24,12 @@ unset LS
 alias cd..='cd ..'
 
 # secure file movement
-alias rm='rm -i'    
+if command -v trash-put >/dev/null 2>&1; then
+    alias rm='trash-put'
+else
+    alias rm='rm -i'
+fi
+
 alias mv='mv -i'
 alias cp='cp -i'
 
@@ -32,10 +37,8 @@ alias cp='cp -i'
 
 
 command -v ipython3 >/dev/null 2>&1 && {
-  IPYTHON_ENV="LESS=-r"
-  alias ipy="$IPYTHON_ENV ipython3"
+  alias ipy="LESS=-r ipython3"
   alias ipyclear='rm -v ~/.config/ipython/profile_*/security/*'
-  unset IPYTHON_ENV
 }
 
 alias grep="grep --color=auto"
