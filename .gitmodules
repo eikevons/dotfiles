@@ -106,3 +106,6 @@
 [submodule "vim/bundle/pgsql.vim"]
 	path = vim/bundle/pgsql.vim
 	url = https://github.com/exu/pgsql.vim
+[submodule "bundle/editorconfig-vim"]
+	path = bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
