@@ -387,7 +387,7 @@ map <C-l>   <C-W>l
 
 " Quick-jump to buffers
 set wildcharm=<C-Z>
-nnoremap <C-B> :b <C-Z>
+nnoremap <C-B> :CtrlPBuffer<CR>
 
 noremap <Left>  <C-W>h
 noremap <Down>  <C-W>j
