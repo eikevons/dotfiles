@@ -395,7 +395,7 @@ function update_color_settings () {
       col_normal="%F{black}%b%k"
       col_time="%F{red}"
       col_host="%B%F{black}"
-      col_path="%B%F{white}%K{green}"
+      col_path="%B%F{black}%K{green}"
       col_retcode="%B%F{white}%K{red}"
     fi
     zstyle ':vcs_info:svn:*' formats "%u%F{yellow}%b"
@@ -418,7 +418,7 @@ function update_color_settings () {
       col_normal="%{[00;30m%}"
       col_time="%{[31m%}"
       col_host="%{[01;35;40m%}"
-      col_path="%{[01;37;42m%}"
+      col_path="%{[01;30;42m%}"
       col_retcode="%{[00;32;41m%}"
     fi
 
