@@ -4,7 +4,12 @@ if [[ $# == 1 && -f $1 ]]; then
   return
 fi
 
-builtin cd $* && return
+local cd_ret
+
+builtin cd $* 2>/dev/null && return
+cd_ret=$?
+
+print "Failed to cd into $*" 1>&2
 
 if [[ $# && $1 != -* ]]; then
   local _create_dir
@@ -15,3 +20,5 @@ if [[ $# && $1 != -* ]]; then
     return
   fi
 fi
+
+return $cd_ret
