@@ -71,6 +71,12 @@ set complete-=i
 " Disable modelines
 set nomodeline
 
+
+" Configure diff
+" Inspired by https://www.reddit.com/r/vim/comments/om1uyj/best_diff_config_for_vim_in_2021/
+set diffopt=filler,iwhite,vertical,internal,indent-heuristic,algorithm:histogram
+
+
 " }}}
 """""""""""""""""""""""""""""""""
 " appearance {{{
