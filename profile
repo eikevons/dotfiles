@@ -40,6 +40,7 @@ if [ -d $HOMEUSR ]; then
         export MANPATH="${HOMEUSR}/man${MANPATH:+:$MANPATH}"
     fi
 fi
+unset HOMEUSR
 
 GOPATH=$HOMEUSR/go
 if [ -d $GOPATH ]; then
@@ -47,6 +48,8 @@ if [ -d $GOPATH ]; then
     if [ -d $GOPATH/bin ]; then
         export PATH="$PATH${PATH:+:}$GOPATH/bin"
     fi
+else
+  unset GOPATH
 fi
 
 # For bibsync <https://github.com/minad/bibsync>
