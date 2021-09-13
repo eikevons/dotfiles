@@ -46,11 +46,12 @@ nnoremap <silent> <buffer> K :let oisk=&isk<CR>:set isk+=.<CR>:let mykw = expand
 " nnoremap <silent> <buffer> ]s :ll<CR>
 nnoremap <silent> <buffer> ]s :lnext<CR>
 nnoremap <silent> <buffer> [s :lprev<CR>
-let g:syntastic_python_checkers=['pyflakes']
 
 " Use Python3 by default
 " syntastic
-let g:syntastic_python_pyflakes_exe = '/usr/bin/pyflakes3'
+let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
+let g:syntastic_python_checkers=["pyflakes", "mypy"]
+
 " jedi-vim
 " 2016-06-17: This is not working because vim on debian is built with
 " python2-support only (see https://bugs.debian.org/729924)
