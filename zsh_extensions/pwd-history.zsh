@@ -27,5 +27,11 @@ which fzf &>/dev/null && {
     local dir="$(fzf --select-1 --exit-0 --no-sort --query "$1" < "$HOME/.cache/zsh-pwd-history")"
     builtin cd "$dir"
   }
-   #TODO register as cd completer
+
+  #TODO register as cd completer
+
+  s () {
+    local dir="$(grep --fixed-strings "$PWD"  "$HOME/.cache/zsh-pwd-history" | fzf --select-1 --exit-0 --no-sort --query "$1")"
+    builtin cd "$dir"
+  }
 }
