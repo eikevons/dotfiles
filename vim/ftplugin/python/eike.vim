@@ -50,7 +50,7 @@ nnoremap <silent> <buffer> [s :lprev<CR>
 " Use Python3 by default
 " syntastic
 let g:syntastic_python_pyflakes_exec = '/usr/bin/pyflakes3'
-let g:syntastic_python_checkers=["pyflakes", "mypy"]
+let g:syntastic_python_checkers=["pyflakes"]
 
 " jedi-vim
 " 2016-06-17: This is not working because vim on debian is built with
