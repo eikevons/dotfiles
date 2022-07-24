@@ -225,13 +225,25 @@ let g:xptemplate_vars = "SParg="
 
 """""""""""""""""""""""""""""""""
 " Airline
-let g:airline_detect_paste=1
+" let g:airline_detect_paste=1
 if !exists('g:airline_symbols')
+  " See airline-customization help tag
   let g:airline_symbols = {}
-  let g:airline_left_sep = '\'
-  let g:airline_right_sep = '/'
-  let g:airline_symbols.linenr = '␤'
+  " Make symbols smaller
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.paste = '+P'
+  " let g:airline_symbols.branch = 'B'
+  let g:airline_symbols.whitespace = 'WS'
+  let g:airline_symbols.dirty='⚡'
 endif
+let g:airline#extensions#branch#displayed_head_limit = 15
+" Turn off counting of words
+let g:airline#extensions#wordcount#enabled = 0
+
+"   let g:airline_left_sep = '\'
+"   let g:airline_right_sep = '/'
+"   let g:airline_symbols.linenr = '␤'
+" endif
 
 """""""""""""""""""""""""""""""""
 " yankstack 1/3
@@ -314,7 +326,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """""""""""""""""""""""""""""""""
 " Autocommands {{{
 
-" 
+"
 " collapse spaces in quote indentations
 "
 augroup mail_eike
