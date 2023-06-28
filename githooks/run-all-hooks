@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Exit when one of the hooks failed
+set -e
+
+name="$(basename "$0")"
+
+for f in "$0".*; do
+    if [ "${f##*.}" != "sample" -a -x "$f" ]; then
+        echo "Executing $name hook: $f"
+        "$f"
+    fi
+done

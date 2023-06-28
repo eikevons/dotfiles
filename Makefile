@@ -4,7 +4,7 @@ DOTFILES := $(CURDIR)
 
 ZSHFUNCTIONS := $(wildcard zshfunctions/*[^~])
 
-all: basic-setup vim-setup zsh-setup colors X-setup screen-setup gnupg-setup
+all: basic-setup vim-setup zsh-setup colors X-setup screen-setup gnupg-setup git-setup
 
 basic-setup: $(addprefix $(HOME)/., profile)
 
@@ -16,6 +16,8 @@ vim-setup:  $(addprefix $(HOME)/., vim vimrc)
 git-submods:
 	@echo " [git] updating submodules"
 	@git submodule foreach 'git pull -q || true'
+
+git-setup: $(HOME)/.githooks
 
 zsh-setup: $(addprefix $(HOME)/., zprofile zshenv zshrc alias zsh_extensions) zshfunctions
 
