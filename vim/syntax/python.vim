@@ -3,9 +3,9 @@
 " Current Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " Previous Maintainer:  Neil Schemenauer <nas at python dot ca>
 " URL:                  https://github.com/hdima/python-syntax
-" Last Change:          2015-03-30
+" Last Change:          2015-11-01
 " Filenames:            *.py
-" Version:              3.3.7
+" Version:              3.6.0
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -25,11 +25,14 @@
 "
 "   Andrea Riciputi
 "   Anton Butanaev
+"   Antony Lee
 "   Caleb Adamantine
 "   David Briscoe
 "   Elizabeth Myers
+"   Ihor Gorobets
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
+"   Joongi Kim
 "   Marc Weber
 "   Pedro Algarvio
 "   Victor Salgado
@@ -156,6 +159,9 @@ syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
+" The standard pyrex.vim unconditionally removes the pythonInclude group, so
+" we provide a dummy group here to avoid crashing pyrex.vim.
+syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
@@ -174,6 +180,10 @@ else
   syn match   pythonStatement   "\<yield\s\+from\>" display
   syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
+  syn keyword pythonStatement   await
+  syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
+  syn match   pythonStatement   "\<async\s\+with\>" display
+  syn match   pythonStatement   "\<async\s\+for\>" display
 endif
 
 "
@@ -394,6 +404,8 @@ if s:Enabled("g:python_highlight_builtin_objs")
   endif
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
+  " EIKE: highlight self, cls
+  syn keyword pythonBuiltinObj	self cls
 endif
 
 "
@@ -554,9 +566,6 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   delcommand HiLink
 endif
-
-" EIKE: highlight self, cls and others as builtin objects
-syn keyword pythonBuiltin     self cls __doc__ __file__ __name__ __package__
 
 " EIKE: Use C/C++ syntax in weave strings.
 " See: http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
