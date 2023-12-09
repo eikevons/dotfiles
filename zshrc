@@ -320,6 +320,7 @@ fi
 # fi
 
 [[ -f "${HOME}/.zsh_extensions/pwd-history.zsh" ]] && source "${HOME}/.zsh_extensions/pwd-history.zsh" 
+[[ -f "${HOME}/.zsh_extensions/recently-used.zsh" ]] && source "${HOME}/.zsh_extensions/recently-used.zsh" 
 
 # Enable key-bindings: ^R, ^T, Meta-c
 if [[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
