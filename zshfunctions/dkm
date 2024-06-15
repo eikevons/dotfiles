@@ -1,0 +1,31 @@
+local base_dir="$HOME/dokumente"
+local subdir
+
+if (( $# == 0 )); then
+  subdir=$(builtin cd "$base_dir" >/dev/null; print -l *(/) | fzf --layout=reverse --tac --preview='ls {}')
+else
+  subdir=$(builtin cd "$base_dir" >/dev/null; print -l *(/) | fzf --layout=reverse --tac --preview='ls {}' --query "$@")
+fi
+
+# No subdir selected
+if [[ -z $subdir ]]; then
+  local title
+  if (( $# == 0 )); then
+    title=""
+  else
+    title="$@"
+  fi
+  vared -p "Dokument folder: " title
+  if [[ -z "$title" ]]; then
+    echo "No title!" 1>&2
+    return 1
+  fi
+
+  subdir="$(date -Id) $title"
+
+  if [[ ! -e "$base_dir/$subdir" ]]; then
+    mkdir "$base_dir/$subdir" 
+  fi
+fi
+
+cd "$base_dir/$subdir"
