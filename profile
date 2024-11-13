@@ -73,3 +73,7 @@ fi
 
 # Move tex-data to a hidden directory
 export TEXMFHOME="$HOME/.local/texmf"
+
+if [ -f $HOME/.profile-secret ]; then
+    source $HOME/.profile-secret
+fi
