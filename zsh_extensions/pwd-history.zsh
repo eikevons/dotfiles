@@ -35,7 +35,7 @@ which fzf &>/dev/null && {
     # cut: Show only the sub-directory part of the path
     # fzf: Show menu for selection
     local dir="$(grep --fixed-strings "$PWD/" "$HOME/.cache/zsh-pwd-history" \
-      | cut -c $(( ${#PWD} + 3))- \
+      | cut -c $(( ${#PWD} + 2))- \
       | fzf --select-1 --exit-0 --no-sort --query "$1" \
     )"
 
