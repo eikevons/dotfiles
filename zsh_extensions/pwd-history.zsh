@@ -34,8 +34,12 @@ which fzf &>/dev/null && {
     # grep: The trailing slash after PWD is to exclude PWD from the matches
     # cut: Show only the sub-directory part of the path
     # fzf: Show menu for selection
+    # NOTE: We use `wc` instead of ${#PWD} to get the number of _bytes_.
+    #       ${#...} gives the number of characters. This breaks, e.g., if PWD
+    #       contains umlaute.
+    local pwd_len_bytes="$(pwd | wc -c)"
     local dir="$(grep --fixed-strings "$PWD/" "$HOME/.cache/zsh-pwd-history" \
-      | cut -c $(( ${#PWD} + 2))- \
+      | cut -c $(( ${pwd_len_bytes} + 1))- \
       | fzf --select-1 --exit-0 --no-sort --query "$1" \
     )"
 
