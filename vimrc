@@ -281,6 +281,13 @@ endif
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 """""""""""""""""""""""""""""""""
+" Copilot
+" Disable for all filetypes by default
+let g:copilot_enabled = {
+      \ "*": v:false,
+      \ }
+
+"""""""""""""""""""""""""""""""""
 " Switch-on pathogen to allow managing git-/svn-checkout scripts/plugins.
 call pathogen#infect()
 
