@@ -43,6 +43,8 @@ command -v ipython3 >/dev/null 2>&1 && {
 
 alias grep="grep --color=auto"
 
+alias ncal="ncal -M"
+
 alias rndline="shuf -n1"
 
 alias gvi='/usr/bin/gvim --remote-tab-silent'
