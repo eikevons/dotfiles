@@ -283,7 +283,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 """""""""""""""""""""""""""""""""
 " Copilot
 " Disable for all filetypes by default
-let g:copilot_enabled = {
+let g:copilot_filetypes = {
       \ "*": v:false,
       \ }
 
