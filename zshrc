@@ -107,6 +107,7 @@ bindkey -v
 
 # viins
 bindkey "^U" backward-kill-line
+bindkey "^H"  vi-backward-kill-word
 bindkey "^K" kill-line
 bindkey "^O" kill-whole-line
 bindkey "^T" transpose-words
@@ -258,6 +259,13 @@ fi
 if (( $#commands[aws_completer] )); then
   autoload bashcompinit && bashcompinit
   complete -C "${commands[aws_completer]}" aws
+fi
+
+if (( $#commands[uv] )); then
+  eval "$(uv generate-shell-completion zsh)"
+  if (( $#commands[uvx] )); then
+    eval "$(uvx --generate-shell-completion zsh)"
+  fi
 fi
 
 # complete all my process names
