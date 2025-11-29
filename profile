@@ -75,5 +75,5 @@ fi
 export TEXMFHOME="$HOME/.local/texmf"
 
 if [ -f $HOME/.profile-secret ]; then
-    source $HOME/.profile-secret
+    . $HOME/.profile-secret
 fi

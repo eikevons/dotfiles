@@ -47,7 +47,8 @@ alias ncal="ncal -M"
 
 alias rndline="shuf -n1"
 
-alias gvi='/usr/bin/gvim --remote-tab-silent'
+alias gvi='gvim --remote-tab-silent'
+alias :e='gvim'
 
 alias npwget='wget -Yoff'
 
@@ -75,9 +76,11 @@ command -v git 2>&1 >/dev/null && {
 }
 
 # docker-compose
-which docker-compose 2>&1 >/dev/null && {
+if which docker-compose 2>&1 >/dev/null; then
   alias dcmp=docker-compose
-}
+elif docker --help | grep -q compose; then
+  alias dcmp="docker compose"
+fi
 
 alias dfu='diff -u'
 
