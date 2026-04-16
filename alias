@@ -61,6 +61,10 @@ command -v git 2>&1 >/dev/null && {
   alias gad='git add'
   alias gba='git branch -a'
   alias gcm='git commit'
+  alias gff='git merge --ff-only'
+  command -v gen-commit-message 2>&1 >/dev/null && {
+    alias gct='git commit -t <(gen-commit-message)'
+  }
   alias gco='git checkout'
   alias gdf='git diff'
   alias glg='git log'
