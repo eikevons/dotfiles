@@ -44,6 +44,10 @@ URxvt.mapAlert:   True
 ! Plugin stuff
 URxvt.url-launcher: xdg-open
 
+! Clipboard pasting
+URxvt.pasteNewLine: true
+URxvt.pasteEscapes: false
+
 ! See urxvtperl(3)
 URxvt.perl-ext-common: default,matcher,-option-popup,-selection-popup,readline,font-size
 
