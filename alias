@@ -61,7 +61,6 @@ command -v git 2>&1 >/dev/null && {
   alias gad='git add'
   alias gba='git branch -a'
   alias gcm='git commit'
-  alias gff='git merge --ff-only'
   command -v gen-commit-message 2>&1 >/dev/null && {
     alias gct='git commit -t <(gen-commit-message)'
   }
@@ -70,8 +69,9 @@ command -v git 2>&1 >/dev/null && {
   alias glg='git log'
   alias grm='git rm'
   alias gst='git status --short'
-  # Merge Feature Brance
+  # Merge Feature Branches
   alias gmfb='git merge --no-ff'
+  alias gmff='git merge --ff-only'
   git flow version >/dev/null 2>&1 && {
     alias gf='git flow'
   }
