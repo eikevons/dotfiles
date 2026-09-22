@@ -30,7 +30,7 @@ else
     alias rm='rm -i'
 fi
 
-alias mv='mv -i'
+# mv -i is now handled by zshfunctions/mv (which also adds `mv SRC` -> `mv SRC .`)
 alias cp='cp -i'
 
 #alias cdrecord='cdrecord -v -eject'
