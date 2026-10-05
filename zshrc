@@ -20,7 +20,7 @@ typeset -U fpath
 if [[ -d "${HOME}/.zshfunctions" ]]; then
     fpath=("${HOME}/.zshfunctions" $fpath)
 
-    autoload -- ${fpath[1]}/[-a-zA-Z]*[^~](:t)
+    # autoload -- ${fpath[1]}/[-a-zA-Z]*[^~](:t)
 fi
 
 # if [[ -f "${HOME}/src/z/z.sh" ]]; then
@@ -314,10 +314,12 @@ if [[ -f $ALIASES ]];then
 fi
 
 # enable color support of ls
-if [[ -f  $DIRCOLORS ]]; then
-    eval `dircolors $DIRCOLORS`
-else
-    eval `dircolors -b`
+if command -v dircolors 2>&1 >/dev/null; then
+    if [[ -f  $DIRCOLORS ]]; then
+        eval `dircolors $DIRCOLORS`
+    else
+        eval `dircolors -b`
+    fi
 fi
 
 

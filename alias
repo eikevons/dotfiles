@@ -82,7 +82,7 @@ command -v git 2>&1 >/dev/null && {
 # docker-compose
 if which docker-compose 2>&1 >/dev/null; then
   alias dcmp=docker-compose
-elif docker --help | grep -q compose; then
+elif command -v docker 2>&1 >/dev/null &&  docker --help | grep -q compose; then
   alias dcmp="docker compose"
 fi
 
