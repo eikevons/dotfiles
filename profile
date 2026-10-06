@@ -13,7 +13,7 @@ umask 0022
     # # export LD_LIBRARY_PATH="/usr/lib/root/5.18:${LD_LIBRARY_PATH}"
 
     # export PYTHONPATH="/usr/lib/root/5.18${PYTHONPATH:+:$PYTHONPATH}"
-# fi
+    # fi
 
 # handle homeusr stuff
 HOMEUSR="${HOME}/.local"
@@ -73,6 +73,21 @@ fi
 
 # Move tex-data to a hidden directory
 export TEXMFHOME="$HOME/.local/texmf"
+
+# MacOSX settings
+# ensure that homebrew is preferred over system exes
+command -v brew 2>&1 >/dev/null && eval "$(brew shellenv)"
+
+# prefere coreutils over system exes
+_gnubin="/opt/homebrew/opt/coreutils/libexec/gnubin" 
+[ -d "$_gnubin" ] && {
+  export PATH="$_gnubin:$PATH"
+}
+unset _gnubin
+
+_local_env="$HOME/.local/bin/env"
+[ -e "$_local_env" ] && . "$_local_env"
+unset _local_env
 
 if [ -f $HOME/.profile-secret ]; then
     . $HOME/.profile-secret
