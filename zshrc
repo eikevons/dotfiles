@@ -20,7 +20,10 @@ typeset -U fpath
 if [[ -d "${HOME}/.zshfunctions" ]]; then
     fpath=("${HOME}/.zshfunctions" $fpath)
 
-    # autoload -- ${fpath[1]}/[-a-zA-Z]*[^~](:t)
+    # Autoload all plain (non-completion) functions; _* are handled by compinit.
+    # midori is Linux-only, skip it elsewhere.
+    autoload -Uz ${fpath[1]}/[^_.]*(N-.:t)
+    [[ $OSTYPE == darwin* ]] && unfunction midori 2>/dev/null
 fi
 
 # if [[ -f "${HOME}/src/z/z.sh" ]]; then
@@ -125,7 +128,8 @@ bindkey "^E" end-of-line
 
 bindkey "^R" history-incremental-search-backward
 bindkey "\e." insert-last-word
-whence changecolors &>/dev/null && bindkey -s "[24~" "changecolors"  # use the same change-color key binding as in vim
+whence changecolors &>/dev/null && bindkey -s "[24~" "changecolors
+"  # use the same change-color key binding as in vim
 
 bindkey "^X^H" _complete_help
 bindkey -s "^X^F" "\"./\"OD"
@@ -163,9 +167,10 @@ if [[ $TERM != linux ]]; then
   zle -N zle-line-init 
 
   # Reset the cursor color before executing any command.
-  function preexec () {
+  function _reset_cursor_color () {
     echo -ne "\033]12;Green\007"
   }
+  add-zsh-hook preexec _reset_cursor_color
 fi
 
 # See Email on zsh-users@zsh.org
@@ -195,7 +200,14 @@ zstyle :compinstall filename "$HOME/.zshrc"
 setopt completeinword
 
 autoload -Uz compinit
-compinit
+# Full (security-checked) compinit at most once a day, cached otherwise.
+_zcompdump=( ${ZDOTDIR:-$HOME}/.zcompdump(N.mh-24) )
+if (( $#_zcompdump )); then
+  compinit -C
+else
+  compinit
+fi
+unset _zcompdump
 
 # See <http://www.linux-mag.com/id/1106>
 zstyle ':completion:*' verbose yes
@@ -314,13 +326,18 @@ if [[ -f $ALIASES ]];then
 fi
 
 # enable color support of ls
-if command -v dircolors 2>&1 >/dev/null; then
+# (GNU coreutils is installed as gdircolors on macOS/Homebrew.)
+local _dircolors
+(( $+commands[dircolors] )) && _dircolors=dircolors
+(( $+commands[gdircolors] )) && _dircolors=gdircolors
+if [[ -n $_dircolors ]]; then
     if [[ -f  $DIRCOLORS ]]; then
-        eval `dircolors $DIRCOLORS`
+        eval "$($_dircolors $DIRCOLORS)"
     else
-        eval `dircolors -b`
+        eval "$($_dircolors -b)"
     fi
 fi
+unset _dircolors
 
 
 # if [[ -f "${HOME}/src/fasd/fasd" ]]; then
@@ -336,10 +353,13 @@ fi
 if [[ -e /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
   export FZF_DEFAULT_OPTS="--reverse"
   source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-# Fuzzy-completion triggered by **<Tab>
-if [[ -e /usr/share/doc/fzf/examples/completion.zsh ]]; then
-  source /usr/share/doc/fzf/examples/completion.zsh
+  # Fuzzy-completion triggered by **<Tab>
+  [[ -e /usr/share/doc/fzf/examples/completion.zsh ]] \
+    && source /usr/share/doc/fzf/examples/completion.zsh
+elif (( $+commands[fzf] )); then
+  # Homebrew / recent fzf (>= 0.48) provides both via --zsh
+  export FZF_DEFAULT_OPTS="--reverse"
+  source <(fzf --zsh)
 fi
 
 # Use colorized file names for completion.
