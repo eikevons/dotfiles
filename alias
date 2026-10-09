@@ -26,6 +26,8 @@ alias cd..='cd ..'
 # secure file movement
 if command -v trash-put >/dev/null 2>&1; then
     alias rm='trash-put'
+elif command -v trash >/dev/null 2>&1; then
+    alias rm='trash'
 else
     alias rm='rm -i'
 fi

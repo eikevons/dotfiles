@@ -489,4 +489,6 @@ case $TERM in
 esac
 ## }}}
 
-[[ -e $HOME/.zshrc.private ]] && source $HOME/.zshrc.private
+if [[ -e $HOME/.zshrc.private ]]; then
+  source $HOME/.zshrc.private
+fi
